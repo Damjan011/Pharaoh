@@ -1,0 +1,13 @@
+.rail {
+  margin: 5px;
+  width: 220px;
+  height: 510px;
+  overflow: hidden;
+  border: 4px solid #cc9933;
+  border-radius: 11px;
+  background: #ffed9e;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 74px rgba(10,10,10,0.07);
+}

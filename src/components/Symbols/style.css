@@ -1,0 +1,26 @@
+.symbols-stripe {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  position: absolute;
+  transition: top 1.2s ease;
+}
+
+.symbols-stripe img {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+}
+
+.symbol-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+}
+
+.symbol-current {
+  /* background: #e41b49; */
+  background: #80DAEB;
+  transition: background 3s ease;
+}

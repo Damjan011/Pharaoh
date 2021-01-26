@@ -5,9 +5,170 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./assets/images/paperboard-yellow-texture.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.view {
+  padding: 30px 25px 30px 25px;
+}
+
+.faded {
+  opacity: 0.3;
+}
+
+.rails-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  z-index: 3;
+}
+
+.spin-button {
+  width: 140px;
+  height: 120px;
+  border: 4px solid #C2985E;
+  background: #fecc66;
+  border-radius: 13px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 44px;
+  transition: all 0.1s ease;
+  box-shadow: 0 0 74px rgba(10,10,10,0.07);
+  text-shadow: 2px 3px 7px #000000;
+  letter-spacing: 0.5px;
+  z-index: 4;
+}
+
+.spin-button:hover {
+  width: 150px;
+  height: 125px;
+  font-size: 48px;
+  transition: all 0.2s ease;
+  /* background: #ffed9e;
+  border: 4px solid #fecc66; */
+}
+
+.spin-button:active {
+  background: #02bdf7;
+  border-color: white;
+  font-size: 47px;
+  text-shadow: 4px 5px 7px #000000;
+  transition: all 0.1s ease;
+}
+
+.sound-button-container {
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.sound-button {
+  width: 100px;
+  height: 100px;
+  border: 4px solid #C2985E;
+  background: #fecc66;
+  border-radius: 13px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 44px;
+  transition: all 0.1s ease;
+  box-shadow: 0 0 74px rgba(10,10,10,0.07);
+  text-shadow: 2px 3px 7px #000000;
+  letter-spacing: 0.5px;
+}
+
+.sound-image {
+  filter: drop-shadow(-1px 1px 6px black);
+  width: 77px;
+  height: 77px;
+}
+
+.sound-button:active {
+  background: #02bdf7;
+  border-color: white;
+}
+
+.sound-button:hover .sound-image{
+  width: 83px;
+  height: 83px;
+  transition: all 0.1s ease;
+}
+
+.bottom-images {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: calc(100% - 50px);
+  bottom: 10px;
+  align-items: baseline;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+.horus-image-wrapper {
+
+}
+
+.horus-image {
+  height: 255px;
+}
+
+.ra-image {
+  height: 255px;
+}
+
+.winner-screen {
+  z-index: 50;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.winner-box {
+  color: black;
+  font-size: 82px;
+  font-weight: bold;
+  opacity: 0.9;
+  border: 4px solid orange;
+  border-radius: 12px;
+  background: white;
+  height: 500px;
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
