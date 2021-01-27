@@ -12,9 +12,11 @@ import Obelisk from '../../assets/symbols/obelisk.png';
 import Ceramic from '../../assets/symbols/ceramic.png';
 import Sun from '../../assets/symbols/sun.png';
 import Scepter from '../../assets/symbols/scepter.png';
+import Pharaoh from '../../assets/symbols/pharaoh.png';
 
-const Symbols = ({ position }) => {
+const Symbols = ({ winTile2, winTile1, position, winPulse }) => {
   const [symbol, setSymbol] = useState('');
+  const [initial, setInitial] = useState(true);
   const symbolsArray = [Anubis, Pyramid, Cat, Ankh, Jackal, Snake, Sarcophagus, Scarab, Obelisk, Ceramic, Sun, Scepter];
   const positionSetter = (pos) => {
     switch (pos) {
@@ -114,10 +116,18 @@ const Symbols = ({ position }) => {
         setSymbol('0px');
     }
   }
+  
   useEffect(() => {
-    positionSetter(position)
+      setInitial(true);
+      if (position !== undefined) {
+        setInitial(false)
+      }
   }, [position]);
 
+
+  useEffect(() => {
+    positionSetter(position);
+  }, [position]);
   return (
     <div style={{ top: `${symbol}` }} className="symbols-stripe">
       <div className="symbol-image-wrapper">
@@ -126,7 +136,7 @@ const Symbols = ({ position }) => {
       {
         symbolsArray.map((el, index) => {
           return (
-            <div className={`symbol-image-wrapper ${index + 1 === position ? 'symbol-current' : ''}`}>
+            <div className={`symbol-image-wrapper ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''} ${initial && index === 0 ? 'initial' : ''} ${index + 1 === position ? 'symbol-current' : ''}`}>
               <img className="symbol-image" src={el} alt='Anubis' />
             </div>
           )

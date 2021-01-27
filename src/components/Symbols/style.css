@@ -20,7 +20,46 @@
 }
 
 .symbol-current {
-  /* background: #e41b49; */
   background: #80DAEB;
-  transition: background 3s ease;
+  transition: background 4s ease;
 }
+
+.initial {
+  animation-name: initialAnimation;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+
+@keyframes initialAnimation {
+  0% {
+    background: #e90e48;
+  }
+
+  100% {
+    background: #f88da7;
+  }
+}
+
+.win-animate {
+  animation-name: winAnimation;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+
+@keyframes winAnimation {
+  0% {
+    background: blue;
+  }
+
+  100% {
+    background: yellow;
+  }
+}
+
+
+
+

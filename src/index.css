@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./assets/images/paperboard-yellow-texture.jpg');
@@ -10,6 +8,20 @@ body {
   background-size: cover;
   background-position: center;
   height: 100vh;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+p {
+  margin: 0;
 }
 
 code {
@@ -34,12 +46,17 @@ code {
 .action-buttons-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 200px;
   z-index: 3;
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
 }
 
 .spin-button {
+  position: absolute;
+  left: calc(50% - 70px);
   width: 140px;
   height: 120px;
   border: 4px solid #C2985E;
@@ -60,20 +77,20 @@ code {
 }
 
 .spin-button:hover {
-  width: 150px;
-  height: 125px;
-  font-size: 48px;
+  left: calc(50% - 72px);
+  width: 145px;
+  height: 123px;
+  font-size: 46px;
   transition: all 0.2s ease;
-  /* background: #ffed9e;
-  border: 4px solid #fecc66; */
 }
 
 .spin-button:active {
   background: #02bdf7;
   border-color: white;
-  font-size: 47px;
+  font-size: 45px;
   text-shadow: 4px 5px 7px #000000;
   transition: all 0.1s ease;
+  outline: none;
 }
 
 .sound-button-container {
@@ -149,26 +166,197 @@ code {
   position: absolute;
   width: 100vw;
   height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .winner-box {
-  color: black;
-  font-size: 82px;
+  color: white;
   font-weight: bold;
-  opacity: 0.9;
-  border: 4px solid orange;
-  border-radius: 12px;
+  border: 2px solid  #7A4F25;
+  border-radius: 9px;
   background: white;
   height: 500px;
   width: 700px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
+  justify-content: space-between;
+  text-shadow: 7px 2px 21px #000000;
+  padding: 20px;
 }
 
+.winner-text {
+  font-family: Papyrus, fantasy;
+  letter-spacing: 5px;
+  font-size: 130px;
+  animation-name: fontSize;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+
+.winner-box {
+  animation-name: color;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+}
+
+@keyframes fontSize {
+  0% {
+    font-size: 130px;
+  }
+  100% {
+    font-size: 132px;
+  }
+}
+
+@keyframes color {
+  0% {
+    background-color: #C2985E;
+    box-shadow: 0px 4px 20px 6px rgba(6,6,6,0.61);
+  }
+  100% {
+    background-color:   #E2AB68;
+    box-shadow: 0px 4px 20px 6px rgba(6,6,6,0.81);
+  }
+}
+
+.button-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+
+/*
+#F5D3A5 Champagne
+#EDC9AF Desert Sand
+
+Name: Aztec Gold
+Hex: #C2985E
+
+
+Name: Russet
+Hex: #7A4F25
+
+Name: Fawn
+Hex: #E2AB68
+
+
+*/
+
+.current-credit-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.current-credit-label {
+  color: white;
+  font-size: 43px;
+  font-weight: bold;
+  font-family: fantasy;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 7px black;
+}
+
+.current-credit {
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+  width: 160px;
+  height: 60px;
+  background: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  border: 3px solid #999;
+  border-radius: 10px;
+  font-family: fantasy;
+  letter-spacing: 2px;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  display: flex;
+}
+
+
+
+.bet-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bet-label {
+  color: white;
+  font-size: 43px;
+  font-weight: bold;
+  font-family: fantasy;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 7px black;
+}
+
+.bet {
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+  width: 110px;
+  height: 60px;
+  background: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  border: 3px solid #999;
+  border-radius: 10px;
+  font-family: fantasy;
+  letter-spacing: 2px;
+}
+
+
+.won-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.won-label {
+  color: white;
+  font-size: 43px;
+  font-weight: bold;
+  font-family: fantasy;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 7px black;
+}
+
+.won {
+  color: white;
+  font-size: 42px;
+  font-weight: bold;
+  width: 110px;
+  height: 60px;
+  background: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  border: 3px solid #999;
+  border-radius: 10px;
+  font-family: fantasy;
+  letter-spacing: 2px;
+}
