@@ -4,7 +4,7 @@ import Symbols from '../Symbols';
 
 const Rail = ({ trigger, winTile1, winTile2, changePosition, winPulse }) => {
   const [spinValue, setSpinValue] = useState(1);
-  var prevRandom = 0;
+  
   const spin = (param) => {
     if (param) {
       const randomSpin = Math.ceil(Math.random() * 12);
@@ -12,19 +12,15 @@ const Rail = ({ trigger, winTile1, winTile2, changePosition, winPulse }) => {
     }
   }
 
-  var curRandom = spin(trigger)
+  var min = 1;
+  var max = 12;
+
+  var lastRandom = 0;
+  
 
   useEffect(() => {
-    if (prevRandom !== curRandom) {
+    var curRandom = spin(trigger);
       setSpinValue(curRandom);
-      prevRandom = curRandom;
-    } else {
-      while(prevRandom === curRandom) {
-        curRandom = Math.ceil(Math.random() * 12);
-      }
-      setSpinValue(curRandom);
-      prevRandom = curRandom;
-    }
   }, [trigger]);
 
   changePosition(spinValue);

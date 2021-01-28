@@ -25,6 +25,7 @@ const App = () => {
   const [winner, setWinner] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [credit, setCredit] = useState(100);
+  const [bet, setBet] = useState(0);
   const [gameInit, setGameInit] = useState(false);
   const [winPulse, setWinPulse] = useState(true);
 
@@ -89,7 +90,7 @@ const App = () => {
       if (winTile2) {
         setWinTile2(false)
       }
-      if (position1 && position1 === position2) {
+      if (position1 && position1 === position2 || position1 === 3) {
         setTimeout(() => {
           //setWinner(true);
           setWinPulse(true);
@@ -99,11 +100,11 @@ const App = () => {
           winAudio();
           console.log(position1)
           console.log('WIN');
-          setCredit(credit + 50)
+          setCredit(credit + (bet * 5))
         }, 1600)
       }
     }
-  }, [position1])
+  }, [position1]);
 
   return (
     <>
@@ -151,7 +152,7 @@ const App = () => {
         <div className="action-buttons-container">
           <div className="pseudo">
           </div>
-          <button disabled={buttonDisabled} className={`spin-button ${buttonDisabled ? 'button-disabled' : ''}`} onClick={() => {
+          <button disabled={buttonDisabled || credit - bet < 0} className={`spin-button ${buttonDisabled || credit - bet < 0 ? 'button-disabled' : ''}`} onClick={() => {
             clickAudio();
             setTrigger(spin);
             setButtonDisabled(true);
@@ -159,7 +160,7 @@ const App = () => {
             setTimeout(() => {
               setButtonDisabled(false);
             }, 1700);
-            setCredit(credit - 2);
+            setCredit(credit - bet);
           }}>SPIN
           </button>
 
@@ -178,7 +179,7 @@ const App = () => {
                   <p>BET</p>
                 </div>
                 <div className="bet">
-                  <p>0 <span style={{ fontSize: '36px' }}>&euro;</span></p>
+                  <p>{bet} <span style={{ fontSize: '36px' }}>&euro;</span></p>
                 </div>
               </div>
 
@@ -187,28 +188,22 @@ const App = () => {
                   <p>WON</p>
                 </div>
                 <div className="won">
-                  <p>22 <span style={{ fontSize: '36px' }}>&euro;</span></p>
+                  <p>0 <span style={{ fontSize: '36px' }}>&euro;</span></p>
                 </div>
               </div>
             </div>
-
-
-
-
-            
-              <BetButtons />
-           
+              <BetButtons buttonDisabled={buttonDisabled} setBet={setBet} bet={bet} />
           </div>
         </div>
 
-        <div className="bottom-images">
+        {/* <div className="bottom-images">
           <div className="ra-image-wrapper">
             <img src={RaImage} className="ra-image" />
           </div>
           <div className="horus-image-wrapper">
             <img src={OsirisImage} className="horus-image" />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

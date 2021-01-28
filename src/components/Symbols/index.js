@@ -150,3 +150,27 @@ const Symbols = ({ winTile2, winTile1, position, winPulse }) => {
 }
 
 export default Symbols;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var min = 1;
+// var max = 3;
+// if (lastRandom === undefined) {
+//     random = Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+// else {
+//     random = Math.floor(Math.random() * (max - min    )) + min;
+//     if (random >= lastRandom) random += 1;
+// }
+// lastRandom = random;
