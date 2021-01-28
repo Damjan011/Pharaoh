@@ -5,10 +5,6 @@ import RollSound from './assets/sounds/roll.wav';
 import AmbientSound from './assets/sounds/ambient.wav';
 import SoundOn from './assets/images/volume-high@3x.png';
 import SoundOff from './assets/images/volume-no@3x.png';
-import RaImage from './assets/images/ra.png';
-import OsirisImage from './assets/images/osiris.png';
-import CatLeftImage from './assets/images/cat-left.png';
-import CatRightImage from './assets/images/cat-right.png';
 import CashSound from './assets/sounds/cash-out.mp3';
 import CoinsSound from './assets/sounds/coins-drop-big.wav';
 import CoinsDropAudio from './assets/sounds/coins-drop.wav';
@@ -54,8 +50,8 @@ const App = () => {
     startAudio.play();
     leverAudio.play();
     setTimeout(() => {
-      startAudio.pause();
-      startAudio.currentTime = 0;
+      //startAudio.pause();
+      //startAudio.currentTime = 0;
       leverAudio.pause();
       leverAudio.currentTime = 0;
     }, 1700)
@@ -90,7 +86,7 @@ const App = () => {
       if (winTile2) {
         setWinTile2(false)
       }
-      if (position1 && position1 === position2 || position1 === 3) {
+      if (position1 && position1 === position2 || position2 === position3) {
         setTimeout(() => {
           //setWinner(true);
           setWinPulse(true);
@@ -164,7 +160,7 @@ const App = () => {
           }}>SPIN
           </button>
 
-          <div className="controls-container">
+          <div style={{marginTop: '20px'}} className="controls-container">
             <div className="status">
               <div className="current-credit-wrapper">
                 <div className="current-credit-label">
@@ -182,7 +178,6 @@ const App = () => {
                   <p>{bet} <span style={{ fontSize: '36px' }}>&euro;</span></p>
                 </div>
               </div>
-
               <div className="won-wrapper">
                 <div className="won-label">
                   <p>WON</p>
@@ -195,15 +190,6 @@ const App = () => {
               <BetButtons buttonDisabled={buttonDisabled} setBet={setBet} bet={bet} />
           </div>
         </div>
-
-        {/* <div className="bottom-images">
-          <div className="ra-image-wrapper">
-            <img src={RaImage} className="ra-image" />
-          </div>
-          <div className="horus-image-wrapper">
-            <img src={OsirisImage} className="horus-image" />
-          </div>
-        </div> */}
       </div>
     </>
   );
