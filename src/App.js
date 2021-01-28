@@ -5,7 +5,6 @@ import RollSound from './assets/sounds/roll.wav';
 import AmbientSound from './assets/sounds/ambient.wav';
 import SoundOn from './assets/images/volume-high@3x.png';
 import SoundOff from './assets/images/volume-no@3x.png';
-import HorusImage from './assets/images/horus.png';
 import RaImage from './assets/images/ra.png';
 import OsirisImage from './assets/images/osiris.png';
 import CatLeftImage from './assets/images/cat-left.png';
@@ -13,6 +12,7 @@ import CatRightImage from './assets/images/cat-right.png';
 import CashSound from './assets/sounds/cash-out.mp3';
 import CoinsSound from './assets/sounds/coins-drop-big.wav';
 import CoinsDropAudio from './assets/sounds/coins-drop.wav';
+import BetButtons from './components/BetButtons';
 
 const App = () => {
   const [background, setBackground] = useState(true);
@@ -83,26 +83,27 @@ const App = () => {
 
   useEffect(() => {
     if (gameInit) {
-      if(winTile1) {
+      if (winTile1) {
         setWinTile1(false);
       }
-      if(winTile2) {
+      if (winTile2) {
         setWinTile2(false)
       }
-    if (position1 && position1 === position2) {
-      setTimeout(() => {
-        //setWinner(true);
-        setWinPulse(true);
+      if (position1 && position1 === position2) {
+        setTimeout(() => {
+          //setWinner(true);
+          setWinPulse(true);
 
-        setWinTile1(true)
-        setWinTile2(true)
-        winAudio();
-        console.log(position1)
-        console.log('WIN');
-        setCredit(credit + 50)
-      }, 1600)
+          setWinTile1(true)
+          setWinTile2(true)
+          winAudio();
+          console.log(position1)
+          console.log('WIN');
+          setCredit(credit + 50)
+        }, 1600)
+      }
     }
-  }}, [position1])
+  }, [position1])
 
   return (
     <>
@@ -169,38 +170,36 @@ const App = () => {
                   <p>CREDIT</p>
                 </div>
                 <div className="current-credit">
-                  <p>{credit} <span style={{fontSize: '36px'}}>&euro;</span></p>
+                  <p>{credit} <span style={{ fontSize: '36px' }}>&euro;</span></p>
                 </div>
               </div>
               <div className="bet-wrapper">
                 <div className="bet-label">
                   <p>BET</p>
                 </div>
-              <div className="bet">
-                <p>0 &euro;</p>
-              </div>
+                <div className="bet">
+                  <p>0 <span style={{ fontSize: '36px' }}>&euro;</span></p>
+                </div>
               </div>
 
               <div className="won-wrapper">
                 <div className="won-label">
                   <p>WON</p>
                 </div>
-              <div className="won">
-                <p>112 &euro;</p>
-              </div>
+                <div className="won">
+                  <p>22 <span style={{ fontSize: '36px' }}>&euro;</span></p>
+                </div>
               </div>
             </div>
 
 
 
 
-            <div className="bet-buttons-container">
-              <p>BET ONE</p>
-            </div>
+            
+              <BetButtons />
+           
           </div>
         </div>
-
-
 
         <div className="bottom-images">
           <div className="ra-image-wrapper">

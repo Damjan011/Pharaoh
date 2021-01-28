@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./assets/images/paperboard-yellow-texture.jpg');
+  background-image: url('./assets/images/background-texture.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
+  font-family: fantasy;
 }
 
 button, input[type="submit"], input[type="reset"] {
@@ -68,11 +68,11 @@ code {
   justify-content: center;
   cursor: pointer;
   font-weight: 700;
-  font-size: 44px;
+  font-size: 48px;
   transition: all 0.1s ease;
   box-shadow: 0 0 74px rgba(10,10,10,0.07);
   text-shadow: 2px 3px 7px #000000;
-  letter-spacing: 0.5px;
+  letter-spacing: 2px;
   z-index: 4;
 }
 
@@ -80,7 +80,7 @@ code {
   left: calc(50% - 72px);
   width: 145px;
   height: 123px;
-  font-size: 46px;
+  font-size: 49px;
   transition: all 0.2s ease;
 }
 
@@ -268,7 +268,7 @@ Hex: #E2AB68
   color: white;
   font-size: 42px;
   font-weight: bold;
-  width: 160px;
+  width: 140px;
   height: 60px;
   background: #212121;
   display: flex;
@@ -313,7 +313,7 @@ Hex: #E2AB68
   color: white;
   font-size: 42px;
   font-weight: bold;
-  width: 110px;
+  width: 90px;
   height: 60px;
   background: #212121;
   display: flex;
@@ -331,7 +331,6 @@ Hex: #E2AB68
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-left: 10px;
   margin-right: 10px;
 }
 
@@ -348,7 +347,7 @@ Hex: #E2AB68
   color: white;
   font-size: 42px;
   font-weight: bold;
-  width: 110px;
+  width: 90px;
   height: 60px;
   background: #212121;
   display: flex;
@@ -359,4 +358,17 @@ Hex: #E2AB68
   border-radius: 10px;
   font-family: fantasy;
   letter-spacing: 2px;
+}
+
+
+/**/
+
+.bet-buttons-container {
+  display: flex;
+}
+
+.bet-one-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
