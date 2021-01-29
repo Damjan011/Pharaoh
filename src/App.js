@@ -22,7 +22,7 @@ const App = () => {
   const [position5, setPosition5] = useState(0);
   const [winner, setWinner] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [credit, setCredit] = useState(100);
+  const [credit, setCredit] = useState(0);
   const [bet, setBet] = useState(0);
   const [gameInit, setGameInit] = useState(false);
   const [winPulse, setWinPulse] = useState(true);
@@ -112,7 +112,7 @@ const App = () => {
       }
       {
         startGame &&
-        <StartGamePanel setStartGame={setStartGame} />
+        <StartGamePanel setCredit={setCredit} setStartGame={setStartGame} />
       }
       <div className={`view ${startGame || winner ? 'faded' : ''}`} style={{ position: 'relative' }}>
       

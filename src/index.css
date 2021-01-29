@@ -32,6 +32,10 @@ input[type=number] {
   outline: none;
 }
 
+input {
+  outline: none;
+}
+
 p {
   margin: 0;
 }
