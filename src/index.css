@@ -37,6 +37,10 @@ code {
   opacity: 0.3;
 }
 
+.faded button {
+  pointer-events: none;
+}
+
 .rails-container {
   display: flex;
   align-items: center;
@@ -101,11 +105,11 @@ code {
 }
 
 .sound-button {
-  width: 100px;
-  height: 100px;
-  border: 4px solid #C2985E;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #C2985E;
   background: #fecc66;
-  border-radius: 13px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,8 +120,8 @@ code {
 
 .sound-image {
   filter: drop-shadow(-1px 1px 6px black);
-  width: 77px;
-  height: 77px;
+  width: 50px;
+  height: 50px;
 }
 
 .sound-button:active {
@@ -126,8 +130,8 @@ code {
 }
 
 .sound-button:hover .sound-image{
-  width: 83px;
-  height: 83px;
+  width: 51px;
+  height: 51px;
   transition: all 0.1s ease;
 }
 
@@ -141,83 +145,6 @@ code {
   margin-left: auto;
   margin-right: auto;
   z-index: 1;
-}
-
-.horus-image-wrapper {
-
-}
-
-.horus-image {
-  height: 255px;
-}
-
-.ra-image {
-  height: 255px;
-}
-
-.winner-screen {
-  z-index: 50;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.winner-box {
-  color: white;
-  font-weight: bold;
-  border: 2px solid  #7A4F25;
-  border-radius: 9px;
-  background: white;
-  height: 500px;
-  width: 700px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-shadow: 7px 2px 21px #000000;
-  padding: 20px;
-}
-
-.winner-text {
-  font-family: Papyrus, fantasy;
-  letter-spacing: 5px;
-  font-size: 130px;
-  animation-name: fontSize;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-out;
-  animation-direction: alternate;
-}
-
-.winner-box {
-  animation-name: color;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-out;
-  animation-direction: alternate;
-}
-
-@keyframes fontSize {
-  0% {
-    font-size: 130px;
-  }
-  100% {
-    font-size: 132px;
-  }
-}
-
-@keyframes color {
-  0% {
-    background-color: #C2985E;
-    box-shadow: 0px 4px 20px 6px rgba(6,6,6,0.61);
-  }
-  100% {
-    background-color:   #E2AB68;
-    box-shadow: 0px 4px 20px 6px rgba(6,6,6,0.81);
-  }
 }
 
 .button-disabled {

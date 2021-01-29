@@ -21,7 +21,7 @@ const Rail = ({ trigger, winTile1, winTile2, changePosition, winPulse }) => {
     //   }
     //   setTimeout(() => {
     //     setSpinValue(spin(trigger));
-    //   }, 100);
+    //   }, 600);
     // } else {
     //   setSpinValue(spin(trigger));
     // }

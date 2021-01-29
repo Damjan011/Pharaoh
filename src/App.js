@@ -9,9 +9,11 @@ import CashSound from './assets/sounds/cash-out.mp3';
 import CoinsSound from './assets/sounds/coins-drop-big.wav';
 import CoinsDropAudio from './assets/sounds/coins-drop.wav';
 import BetButtons from './components/BetButtons';
+import StartGamePanel from './components/StartGamePanel';
+import WinPanel from './components/WinPanel';
 
 const App = () => {
-  const [background, setBackground] = useState(true);
+  const [background, setBackground] = useState(false);
   const [trigger, setTrigger] = useState(0);
   const [position1, setPosition1] = useState(0);
   const [position2, setPosition2] = useState(0);
@@ -24,6 +26,8 @@ const App = () => {
   const [bet, setBet] = useState(0);
   const [gameInit, setGameInit] = useState(false);
   const [winPulse, setWinPulse] = useState(true);
+
+  const [startGame, setStartGame] = useState(true);
 
   const [winTile1, setWinTile1] = useState(false);
   const [winTile2, setWinTile2] = useState(false);
@@ -90,7 +94,6 @@ const App = () => {
         setTimeout(() => {
           //setWinner(true);
           setWinPulse(true);
-
           setWinTile1(true)
           setWinTile2(true)
           winAudio();
@@ -105,29 +108,19 @@ const App = () => {
   return (
     <>
       { winner &&
-        <div className="winner-screen">
-          <div className="winner-box">
-            <div className="winner-text-content">
-              <div className="winner-text">
-                <p>WINNER!</p>
-              </div>
-              <div className="credits-area">
-                <p>Credits: +50</p>
-              </div>
-            </div>
-            <button className="spin-button" onClick={() => setWinner(false)}>
-              OK
-          </button>
-          </div>
-        </div>
+        <WinPanel setWinner={setWinner} />
       }
-      <div className={`view ${winner ? 'faded' : ''}`} style={{ position: 'relative' }}>
-
+      {
+        startGame &&
+        <StartGamePanel setStartGame={setStartGame} />
+      }
+      <div className={`view ${startGame || winner ? 'faded' : ''}`} style={{ position: 'relative' }}>
+      
         <Sound background={background} />
         <div className="sound-button-container">
-          <div className="sound-button" onClick={() => setBackground(!background)}>
+          <button className="sound-button" onClick={() => setBackground(!background)}>
             <img className="sound-image" src={background ? SoundOn : SoundOff} />
-          </div>
+          </button>
         </div>
         <div className="rails-container">
           <Rail winTile1={winTile1} winPulse={winPulse} changePosition={position1 => setPosition1(position1)} trigger={trigger} />
