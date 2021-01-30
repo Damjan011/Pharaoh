@@ -34,6 +34,8 @@ const App = () => {
   const [winTile2, setWinTile2] = useState(false);
   const [winTile3, setWinTile3] = useState(false);
 
+  const [wonFunds, setWonFunds] = useState(0);
+
   const spin = () => {
     return trigger + 1;
   }
@@ -56,8 +58,6 @@ const App = () => {
     startAudio.play();
     leverAudio.play();
     setTimeout(() => {
-      //startAudio.pause();
-      //startAudio.currentTime = 0;
       leverAudio.pause();
       leverAudio.currentTime = 0;
     }, 1700)
@@ -83,9 +83,46 @@ const App = () => {
       </audio>
     )
   }
+const winChecker = (pos1, pos2, pos3) => {
+  if (pos1) {
+    setTimeout(() => {
+      if (pos1 === pos2) {
+      setWinPulse(true);
+      setWinTile1(true);
+      setWinTile2(true);
+      winAudio();
+    console.log(position1, position2, position3)
+    console.log('WIN');
+    setCredit(credit + (bet * 3));
+    setWonFunds(bet * 3);
+    } else if (pos2 === pos3) {
+      setWinPulse(true);
+      setWinTile2(true);
+      setWinTile3(true);
+      winAudio();
+    console.log(position1, position2, position3)
+    console.log('WIN');
+    setCredit(credit + (bet * 3));
+    setWonFunds(bet * 3);
+    } else if (pos2 === pos3 === pos1) {
+      setWinPulse(true);
+      setWinTile1(true);
+      setWinTile2(true);
+      setWinTile3(true);
+      winAudio();
+    console.log(position1, position2, position3)
+    console.log('WIN');
+    setCredit(credit + (bet * 3));
+    setWonFunds(bet * 3);
+    }
+    
+  }, 1600);
+  }
+}
 
   useEffect(() => {
     if (gameInit) {
+      setWonFunds(0)
       if (winTile1) {
         setWinTile1(false);
       }
@@ -95,19 +132,20 @@ const App = () => {
       if (winTile3) {
         setWinTile3(false)
       }
-      if (position1 && position1 === position2 || position2 === position3) {
-        setTimeout(() => {
-          //setWinner(true);
-          setWinPulse(true);
-          setWinTile1(true)
-          setWinTile2(true)
-          setWinTile3(true)
-          winAudio();
-          console.log(position1)
-          console.log('WIN');
-          setCredit(credit + (bet * 5))
-        }, 1600)
-      }
+      // if (position1 && position1 === position2 || position2 === position3 || position1 === position2 === position3) {
+      //   setTimeout(() => {
+      //     //setWinner(true);
+      //     setWinPulse(true);
+      //     setWinTile1(true)
+      //     setWinTile2(true)
+      //     setWinTile3(true)
+      //     winAudio();
+      //     console.log(position1, position2, position3)
+      //     console.log('WIN');
+      //     setCredit(credit + (bet * 5))
+      //   }, 1600)
+      // }
+      winChecker(position1, position2, position3)
     }
   }, [position1]);
 
@@ -135,7 +173,7 @@ const App = () => {
         <div className="rails-container">
           <Rail winTile1={winTile1} winPulse={winPulse} changePosition={position1 => setPosition1(position1)} trigger={trigger} />
           <Rail winTile2={winTile2} winPulse={winPulse} changePosition={position2 => setPosition2(position2)} trigger={trigger} />
-          <Rail winPulse={winPulse} changePosition={position3 => setPosition3(position3)} trigger={trigger} />
+          <Rail winTile3={winTile3} winPulse={winPulse} changePosition={position3 => setPosition3(position3)} trigger={trigger} />
           <Rail winPulse={winPulse} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
           <Rail winPulse={winPulse} changePosition={position5 => setPosition5(position5)} trigger={trigger} />
         </div>
@@ -182,7 +220,7 @@ const App = () => {
                   <p>WON</p>
                 </div>
                 <div className="won">
-                  <p>0 <span style={{ fontSize: '36px' }}>&euro;</span></p>
+                  <p>{wonFunds} <span style={{ fontSize: '36px' }}>&euro;</span></p>
                 </div>
               </div>
             </div>

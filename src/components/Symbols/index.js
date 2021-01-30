@@ -13,7 +13,7 @@ import Bastet from '../../assets/symbols/bastet.png';
 import Thoth from '../../assets/symbols/thoth.png';
 import Horus from '../../assets/symbols/horus.png';
 
-const Symbols = ({ winTile2, winTile1, position, winPulse }) => {
+const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
   const symbolsArray = [Bastet, Scarab, Ankh, Thoth, Jackal, Pyramid, Anubis, Snake, Obelisk, Horus, Cat, Sarcophagus];
@@ -139,7 +139,8 @@ const Symbols = ({ winTile2, winTile1, position, winPulse }) => {
             ${index === 1 || index === 4 || index === 7 || index === 10 ? 'medium-symbol' : ''} 
             ${index === 0 || index === 3 || index === 6 || index === 9 ? 'high-symbol' : ''} 
             ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} 
-            ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''} 
+            ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''}
+            ${winPulse && winTile3 && index + 1 === position ? 'win-animate' : ''}  
             ${index + 1 === position ? 'symbol-current' : ''}
           `}>
               <img className="symbol-image" src={el} alt='Anubis' />
