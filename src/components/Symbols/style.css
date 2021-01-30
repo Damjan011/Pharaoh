@@ -19,9 +19,26 @@
   width: 220px;
 }
 
-.symbol-current {
+/* .symbol-current {
   background: #80DAEB;
   transition: background 4s ease;
+} */
+
+@keyframes currentAnimation {
+  0% {
+    /* background: transparent; */
+  }
+  100% {
+    background: white;
+  }
+}
+
+.symbol-current {
+  animation-name: currentAnimation;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
 }
 
 .initial {
@@ -34,13 +51,30 @@
 
 @keyframes initialAnimation {
   0% {
-    background: #e90e48;
+    background: initial;
   }
 
   100% {
-    background: #f88da7;
+    /* background: #f88da7; */
+    background: #e90e48;
   }
 }
+
+.medium-symbol {
+  background: #93d6ec;
+}
+
+.high-symbol {
+  /* background: #ffa500; */
+  background: #f2295c;
+}
+/*
+med #93d6ec
+*/
+
+/*
+high #ffa500
+*/
 
 .win-animate {
   animation-name: winAnimation;

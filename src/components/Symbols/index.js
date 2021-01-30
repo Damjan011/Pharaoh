@@ -9,15 +9,14 @@ import Jackal from '../../assets/symbols/jackal.png';
 import Sarcophagus from '../../assets/symbols/sarcophagus.png';
 import Scarab from '../../assets/symbols/scarab.png';
 import Obelisk from '../../assets/symbols/obelisk.png';
-import Ceramic from '../../assets/symbols/ceramic.png';
-import Sun from '../../assets/symbols/sun.png';
-import Scepter from '../../assets/symbols/scepter.png';
-import Pharaoh from '../../assets/symbols/pharaoh.png';
+import Bastet from '../../assets/symbols/bastet.png';
+import Thoth from '../../assets/symbols/thoth.png';
+import Horus from '../../assets/symbols/horus.png';
 
 const Symbols = ({ winTile2, winTile1, position, winPulse }) => {
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
-  const symbolsArray = [Anubis, Pyramid, Cat, Ankh, Jackal, Snake, Sarcophagus, Scarab, Obelisk, Ceramic, Sun, Scepter];
+  const symbolsArray = [Bastet, Scarab, Ankh, Thoth, Jackal, Pyramid, Anubis, Snake, Obelisk, Horus, Cat, Sarcophagus];
   const positionSetter = (pos) => {
     switch (pos) {
       case 1:
@@ -130,22 +129,31 @@ const Symbols = ({ winTile2, winTile1, position, winPulse }) => {
   return (
     <div style={{ top: `${symbol}` }} className="symbols-stripe">
       <div className="symbol-image-wrapper">
-        <img src={Scepter} />
+        <img src={Sarcophagus} />
       </div>
       {
         symbolsArray.map((el, index) => {
           return (
-            <div className={`symbol-image-wrapper ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''} ${initial && index === 0 ? 'initial' : ''} ${index + 1 === position ? 'symbol-current' : ''}`}>
+            <div 
+            className={`symbol-image-wrapper 
+            ${index === 1 || index === 4 || index === 7 || index === 10 ? 'medium-symbol' : ''} 
+            ${index === 0 || index === 3 || index === 6 || index === 9 ? 'high-symbol' : ''} 
+            ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} 
+            ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''} 
+            ${index + 1 === position ? 'symbol-current' : ''}
+          `}>
               <img className="symbol-image" src={el} alt='Anubis' />
             </div>
           )
         })
       }
-      <div className="symbol-image-wrapper">
-        <img src={Anubis} />
+      <div className="symbol-image-wrapper high-symbol">
+        <img src={Bastet} />
       </div>
     </div>
   )
 }
 
 export default Symbols;
+
+// ${initial && index === 0 ? 'initial' : ''} 

@@ -110,7 +110,7 @@
   color: white;
   font-size: 42px;
   font-weight: bold;
-  width: 140px;
+  width: 120px;
   height: 60px;
   background: #212121;
   display: flex;
@@ -132,7 +132,7 @@
 
 .funds-bar span {
   position: absolute;
-  left: 125px;
+  left: 105px;
   font-size: 36px;
 }
 

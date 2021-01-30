@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Rail from './components/Rail';
 import LeverSound from './assets/sounds/start.wav';
-import RollSound from './assets/sounds/roll.wav';
-import AmbientSound from './assets/sounds/ambient.wav';
+import RollSound from './assets/sounds/roll-crop.wav';
+import AmbientSound from './assets/sounds/ambient-trim.wav';
 import SoundOn from './assets/images/volume-high@3x.png';
 import SoundOff from './assets/images/volume-no@3x.png';
 import CashSound from './assets/sounds/cash-out.mp3';
@@ -11,6 +11,7 @@ import CoinsDropAudio from './assets/sounds/coins-drop.wav';
 import BetButtons from './components/BetButtons';
 import StartGamePanel from './components/StartGamePanel';
 import WinPanel from './components/WinPanel';
+import Legend from './components/Legend';
 
 const App = () => {
   const [background, setBackground] = useState(false);
@@ -31,6 +32,7 @@ const App = () => {
 
   const [winTile1, setWinTile1] = useState(false);
   const [winTile2, setWinTile2] = useState(false);
+  const [winTile3, setWinTile3] = useState(false);
 
   const spin = () => {
     return trigger + 1;
@@ -90,12 +92,16 @@ const App = () => {
       if (winTile2) {
         setWinTile2(false)
       }
+      if (winTile3) {
+        setWinTile3(false)
+      }
       if (position1 && position1 === position2 || position2 === position3) {
         setTimeout(() => {
           //setWinner(true);
           setWinPulse(true);
           setWinTile1(true)
           setWinTile2(true)
+          setWinTile3(true)
           winAudio();
           console.log(position1)
           console.log('WIN');
@@ -112,13 +118,17 @@ const App = () => {
       }
       {
         startGame &&
-        <StartGamePanel setCredit={setCredit} setStartGame={setStartGame} />
+        <StartGamePanel setBackground={setBackground} setCredit={setCredit} setStartGame={setStartGame} />
       }
       <div className={`view ${startGame || winner ? 'faded' : ''}`} style={{ position: 'relative' }}>
       
         <Sound background={background} />
-        <div className="sound-button-container">
-          <button className="sound-button" onClick={() => setBackground(!background)}>
+        <div className="top-bar">
+          <Legend />
+          <button className="sound-button" onClick={() => {
+            setBackground(!background);
+            }
+            }>
             <img className="sound-image" src={background ? SoundOn : SoundOff} />
           </button>
         </div>
@@ -132,10 +142,6 @@ const App = () => {
 
         {/* <div style={{ display: 'flex', fontSize: '44px', justifyContent: 'space-evenly', padding: '50px' }}>
           <p>{position1}</p>
-          <p>{position2}</p>
-          <p>{position3}</p>
-          <p>{position4}</p>
-          <p>{position5}</p>
         </div> */}
 
         <div className="action-buttons-container">

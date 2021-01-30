@@ -113,11 +113,11 @@ code {
   outline: none;
 }
 
-.sound-button-container {
+.top-bar {
   height: 135px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .sound-button {

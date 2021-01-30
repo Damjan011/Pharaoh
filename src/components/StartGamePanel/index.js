@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import './style.css';
 
-const StartGamePanel = ({ setStartGame, setCredit }) => {
+const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
   const [startAppear, setStartAppear] = useState(true);
-
   const fundInput = useRef(null);
-
   const clickPlay = () => {
     setCredit(fundInput.current.value);
+    setTimeout(() => {
+      setBackground(true);
+    }, 200);
   }
 
   return (
@@ -28,7 +29,7 @@ const StartGamePanel = ({ setStartGame, setCredit }) => {
               <p>Please enter your funds:</p>
             </div>
             <div className="funds-bar">
-              <input ref={fundInput} pattern="\d*" maxlength="4"></input>
+              <input ref={fundInput} pattern="\d*" maxlength="3"></input>
               <span>$</span>
             </div>
           </div>
