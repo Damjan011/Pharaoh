@@ -2,7 +2,6 @@ import React from 'react';
 import './style.css';
 import Anubis from '../../assets/symbols/anubis.png';
 import Bastet from '../../assets/symbols/bastet.png';
-import Seth from '../../assets/symbols/seth.png';
 import Thoth from '../../assets/symbols/thoth.png';
 import Horus from '../../assets/symbols/horus.png';
 import Cat from '../../assets/symbols/cat.png';
@@ -13,8 +12,6 @@ import Jackal from '../../assets/symbols/jackal.png';
 import Sarcophagus from '../../assets/symbols/sarcophagus.png';
 import Scarab from '../../assets/symbols/scarab.png';
 import Obelisk from '../../assets/symbols/obelisk.png';
-import Ceramic from '../../assets/symbols/ceramic.png';
-import Scepter from '../../assets/symbols/scepter.png';
 
 const Legend = () => {
   return (

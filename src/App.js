@@ -159,7 +159,7 @@ const winChecker = (pos1, pos2, pos3) => {
       }
       {
         startGame &&
-        <StartGamePanel setBackground={setBackground} setCredit={setCredit} setStartGame={setStartGame} />
+        <StartGamePanel credit={credit} setBackground={setBackground} setCredit={setCredit} setStartGame={setStartGame} />
       }
       <div className={`view ${startGame || winner ? 'faded' : ''}`} style={{ position: 'relative' }}>
       
@@ -180,10 +180,6 @@ const winChecker = (pos1, pos2, pos3) => {
           <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
           <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position5 => setPosition5(position5)} trigger={trigger} />
         </div>
-
-        {/* <div style={{ display: 'flex', fontSize: '44px', justifyContent: 'space-evenly', padding: '50px' }}>
-          <p>{position1}</p>
-        </div> */}
 
         <div className="action-buttons-container">
           <div className="pseudo">
