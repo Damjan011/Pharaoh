@@ -34,13 +34,13 @@
   }
 }
 
-.symbol-current {
+/* .symbol-current {
   animation-name: currentAnimation;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-out;
   animation-direction: alternate;
-}
+} */
 
 .initial {
   animation-name: initialAnimation;
@@ -66,8 +66,8 @@
 }
 
 .high-symbol {
-  /* background: #ffa500; */
-  background: #f2295c;
+  background: #ffa500;
+  /* background:#f14f76; */
 }
 /*
 med #93d6ec
@@ -87,7 +87,7 @@ high #ffa500
 
 @keyframes winAnimation {
   0% {
-    background: blue;
+    background: red;
   }
   100% {
     background: yellow;

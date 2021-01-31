@@ -17,6 +17,47 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
   const symbolsArray = [Bastet, Scarab, Ankh, Thoth, Jackal, Pyramid, Anubis, Snake, Obelisk, Horus, Cat, Sarcophagus];
+
+  const symbolsNewArray = [
+    {name: Bastet, value: 'high'},
+    {name: Scarab, value: 'med'},
+    {name: Ankh, value: 'low'},
+    {name: Thoth, value: 'high'},
+    {name: Jackal, value: 'med'},
+    {name: Pyramid, value: 'low'},
+    {name: Anubis, value: 'high'},
+    {name: Snake, value: 'med'},
+    {name: Obelisk, value: 'low'},
+    {name: Horus, value: 'high'},
+    {name: Cat, value: 'med'},
+    {name: Sarcophagus, value: 'low'},
+  ]
+
+    const increaseArray = (arr) => {
+      arr.forEach(element => {
+        if (element.value === 'high') {
+        arr.push(element);
+        }
+        if (element.value === 'med') {
+          arr.push(element);
+          arr.push(element);
+          arr.push(element);
+          }
+          if (element.value === 'low') {
+            arr.push(element);
+            arr.push(element);
+            arr.push(element);
+            arr.push(element);
+            arr.push(element);
+            arr.push(element);
+            arr.push(element);
+            }
+      });
+      console.log(arr);
+      return arr;
+    }
+
+
   const positionSetter = (pos) => {
     switch (pos) {
       case 1:
@@ -118,6 +159,7 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
   
   useEffect(() => {
       setInitial(true);
+      console.log(increaseArray(symbolsNewArray).sort(() => Math.random() - 0.5))
       if (position !== undefined) {
         setInitial(false)
       }
@@ -125,7 +167,26 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
 
   useEffect(() => {
     positionSetter(position);
+
+
+    //   if (position + 6 >= 12) {
+    //   positionSetter(position -2);
+    //   setTimeout(() => {
+    //   positionSetter(position -3);
+    // }, 200)
+    //   } else {
+    //     positionSetter(position + 2)
+    //     setTimeout(() => {
+    //       positionSetter(position +3);
+    //     }, 200)
+    //   }
+    //   setTimeout(() => {
+    //     positionSetter(position);
+    //   }, 600);
+
   }, [position]);
+
+
   return (
     <div style={{ top: `${symbol}` }} className="symbols-stripe">
       <div className="symbol-image-wrapper">

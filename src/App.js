@@ -16,6 +16,7 @@ import Legend from './components/Legend';
 const App = () => {
   const [background, setBackground] = useState(false);
   const [trigger, setTrigger] = useState(0);
+  const [positionTop1, setPositionTop1] = useState(0);
   const [position1, setPosition1] = useState(0);
   const [position2, setPosition2] = useState(0);
   const [position3, setPosition3] = useState(0);
@@ -104,7 +105,7 @@ const winChecker = (pos1, pos2, pos3) => {
     console.log('WIN');
     setCredit(credit + (bet * 3));
     setWonFunds(bet * 3);
-    } else if (pos2 === pos3 === pos1) {
+    } else if (pos2 === pos3 && pos2 === pos1) {
       setWinPulse(true);
       setWinTile1(true);
       setWinTile2(true);
@@ -122,6 +123,7 @@ const winChecker = (pos1, pos2, pos3) => {
 
   useEffect(() => {
     if (gameInit) {
+      //setWinner(true);
       setWonFunds(0)
       if (winTile1) {
         setWinTile1(false);
@@ -132,9 +134,10 @@ const winChecker = (pos1, pos2, pos3) => {
       if (winTile3) {
         setWinTile3(false)
       }
+      console.log('im top',positionTop1)
       // if (position1 && position1 === position2 || position2 === position3 || position1 === position2 === position3) {
       //   setTimeout(() => {
-      //     //setWinner(true);
+      //     //
       //     setWinPulse(true);
       //     setWinTile1(true)
       //     setWinTile2(true)
@@ -171,11 +174,11 @@ const winChecker = (pos1, pos2, pos3) => {
           </button>
         </div>
         <div className="rails-container">
-          <Rail winTile1={winTile1} winPulse={winPulse} changePosition={position1 => setPosition1(position1)} trigger={trigger} />
-          <Rail winTile2={winTile2} winPulse={winPulse} changePosition={position2 => setPosition2(position2)} trigger={trigger} />
-          <Rail winTile3={winTile3} winPulse={winPulse} changePosition={position3 => setPosition3(position3)} trigger={trigger} />
-          <Rail winPulse={winPulse} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
-          <Rail winPulse={winPulse} changePosition={position5 => setPosition5(position5)} trigger={trigger} />
+          <Rail winTile1={winTile1} winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position1 => setPosition1(position1)} trigger={trigger} />
+          <Rail winTile2={winTile2} winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position2 => setPosition2(position2)} trigger={trigger} />
+          <Rail winTile3={winTile3} winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position3 => setPosition3(position3)} trigger={trigger} />
+          <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
+          <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position5 => setPosition5(position5)} trigger={trigger} />
         </div>
 
         {/* <div style={{ display: 'flex', fontSize: '44px', justifyContent: 'space-evenly', padding: '50px' }}>
