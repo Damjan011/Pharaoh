@@ -43,7 +43,8 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
                 if (fundInput.current.value > 999) {
                   fundInput.current.value = 999;
                   setInputWarning(true);
-                } else {
+                } else if (fundInput.current.value == 0) {
+                  fundInput.current.value = null;
                   setInputWarning(false)
                 }
               }} ref={fundInput}
