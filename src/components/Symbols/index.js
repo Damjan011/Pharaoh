@@ -14,48 +14,48 @@ import Thoth from '../../assets/symbols/thoth.png';
 import Horus from '../../assets/symbols/horus.png';
 
 const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
+  const [gameArray, setGameArray] = useState([]);
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
   const symbolsArray = [Bastet, Scarab, Ankh, Thoth, Jackal, Pyramid, Anubis, Snake, Obelisk, Horus, Cat, Sarcophagus];
 
   const symbolsNewArray = [
-    {name: Bastet, value: 'high'},
-    {name: Scarab, value: 'med'},
-    {name: Ankh, value: 'low'},
-    {name: Thoth, value: 'high'},
-    {name: Jackal, value: 'med'},
-    {name: Pyramid, value: 'low'},
-    {name: Anubis, value: 'high'},
-    {name: Snake, value: 'med'},
-    {name: Obelisk, value: 'low'},
-    {name: Horus, value: 'high'},
-    {name: Cat, value: 'med'},
-    {name: Sarcophagus, value: 'low'},
+    { name: Bastet, value: 'high' },
+    { name: Scarab, value: 'med' },
+    { name: Ankh, value: 'low' },
+    { name: Thoth, value: 'high' },
+    { name: Jackal, value: 'med' },
+    { name: Pyramid, value: 'low' },
+    { name: Anubis, value: 'high' },
+    { name: Snake, value: 'med' },
+    { name: Obelisk, value: 'low' },
+    { name: Horus, value: 'high' },
+    { name: Cat, value: 'med' },
+    { name: Sarcophagus, value: 'low' },
   ]
 
-    const increaseArray = (arr) => {
-      arr.forEach(element => {
-        if (element.value === 'high') {
+  const increaseArray = (arr) => {
+    arr.forEach(element => {
+      if (element.value === 'high') {
         arr.push(element);
-        }
-        if (element.value === 'med') {
-          arr.push(element);
-          arr.push(element);
-          arr.push(element);
-          }
-          if (element.value === 'low') {
-            arr.push(element);
-            arr.push(element);
-            arr.push(element);
-            arr.push(element);
-            arr.push(element);
-            arr.push(element);
-            arr.push(element);
-            }
-      });
-      console.log(arr);
-      return arr;
-    }
+      }
+      if (element.value === 'med') {
+        arr.push(element);
+        arr.push(element);
+        arr.push(element);
+      }
+      if (element.value === 'low') {
+        arr.push(element);
+        arr.push(element);
+        arr.push(element);
+        arr.push(element);
+        arr.push(element);
+        arr.push(element);
+        arr.push(element);
+      }
+    });
+    return arr;
+  }
 
 
   const positionSetter = (pos) => {
@@ -156,36 +156,24 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
         setSymbol('0px');
     }
   }
-  
+
   useEffect(() => {
-      setInitial(true);
-      console.log(increaseArray(symbolsNewArray).sort(() => Math.random() - 0.5))
-      if (position !== undefined) {
-        setInitial(false)
-      }
+    setInitial(true);
+    if (position !== undefined) {
+      setInitial(false)
+    }
   }, [position]);
 
   useEffect(() => {
     positionSetter(position);
-
-
-    //   if (position + 6 >= 12) {
-    //   positionSetter(position -2);
-    //   setTimeout(() => {
-    //   positionSetter(position -3);
-    // }, 200)
-    //   } else {
-    //     positionSetter(position + 2)
-    //     setTimeout(() => {
-    //       positionSetter(position +3);
-    //     }, 200)
-    //   }
-    //   setTimeout(() => {
-    //     positionSetter(position);
-    //   }, 600);
-
+    // console.log(gameInitSymbolArray)
   }, [position]);
 
+  useEffect(() => {
+    const gameInitSymbolArray = increaseArray(symbolsNewArray);
+    const randomizedGameArray = gameInitSymbolArray.sort(() => Math.random() - 0.5);
+    setGameArray(randomizedGameArray);
+  }, [])
 
   return (
     <div style={{ top: `${symbol}` }} className="symbols-stripe">
@@ -193,10 +181,10 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
         <img src={Sarcophagus} />
       </div>
       {
-        symbolsArray.map((el, index) => {
+        gameArray.map((el, index) => {
           return (
-            <div 
-            className={`symbol-image-wrapper 
+            <div
+              className={`symbol-image-wrapper 
             ${index === 1 || index === 4 || index === 7 || index === 10 ? 'medium-symbol' : ''} 
             ${index === 0 || index === 3 || index === 6 || index === 9 ? 'high-symbol' : ''} 
             ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} 
@@ -204,7 +192,7 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
             ${winPulse && winTile3 && index + 1 === position ? 'win-animate' : ''}  
             ${index + 1 === position ? 'symbol-current' : ''}
           `}>
-              <img className="symbol-image" src={el} alt='Anubis' />
+              <img className="symbol-image" src={el.name} alt='Anubis' />
             </div>
           )
         })

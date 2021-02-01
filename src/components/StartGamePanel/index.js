@@ -1,14 +1,23 @@
 import React, { useRef, useState } from 'react';
 import './style.css';
 
-const StartGamePanel = ({ setStartGame, setCredit, setBackground, credit }) => {
+const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
+  const [inputWarning, setInputWarning] = useState(false);
   const [startAppear, setStartAppear] = useState(true);
   const fundInput = useRef(null);
+
   const clickPlay = () => {
     setCredit(fundInput.current.value);
     setTimeout(() => {
       setBackground(true);
     }, 200);
+  }
+
+  function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+    return true;
   }
 
   return (
@@ -29,11 +38,24 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground, credit }) => {
               <p>Please enter your funds:</p>
             </div>
             <div className="funds-bar">
-              <input onChange={(e) => {
-                console.log(e)
-              }} ref={fundInput} pattern="\d*" maxlength="3"></input>
+              <input placeholder="0" onChange={() => {
+                console.log(fundInput.current.value);
+                if (fundInput.current.value > 999) {
+                  fundInput.current.value = 999;
+                  setInputWarning(true);
+                } else {
+                  setInputWarning(false)
+                }
+              }} ref={fundInput}
+
+                max="3" type="number"></input>
               <span>$</span>
             </div>
+
+            {
+              inputWarning &&
+              <p>max 999</p>
+            }
           </div>
         </div>
         <button onClick={() => {
