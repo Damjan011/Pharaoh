@@ -1,6 +1,14 @@
-import { TYPE_ANUBIS, TYPE_BASTET, TYPE_HORUS, TYPE_THOTH, TYPE_JACKAL, 
+import { TYPE_INCREMENT, TYPE_DECREMENT, TYPE_ANUBIS, TYPE_BASTET, TYPE_HORUS, TYPE_THOTH, TYPE_JACKAL, 
   TYPE_SNAKE, TYPE_SCARAB, TYPE_CAT, TYPE_SARCOPHAGUS, TYPE_PYRAMID, 
   TYPE_ANKH, TYPE_OBELISK } from './actionTypes';
+
+  export const increment = () => ({
+    type: TYPE_INCREMENT
+  });
+  
+  export const decrement = () => ({
+    type: TYPE_DECREMENT
+  });
 
 export const isAnubis = () => ({
   type: TYPE_ANUBIS

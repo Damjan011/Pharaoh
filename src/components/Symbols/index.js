@@ -12,26 +12,29 @@ import Obelisk from '../../assets/symbols/obelisk.png';
 import Bastet from '../../assets/symbols/bastet.png';
 import Thoth from '../../assets/symbols/thoth.png';
 import Horus from '../../assets/symbols/horus.png';
+import { connect } from 'react-redux';
+import { isAnubis, isBastet } from '../../redux/actionCreators.js';
 
-const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
-  const [gameArray, setGameArray] = useState([]);
+const SymbolsComponent = ({ winTile2, winTile1, handleAnubis, handleBastet, winTile3, position, winPulse, curSymbolState }) => {
+  const [gameArray, setGameArray] = useState([{name: '', value: '', symbol: ''}]);
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
+  // ${initial && index === 0 ? 'initial' : ''} 
   const symbolsArray = [Bastet, Scarab, Ankh, Thoth, Jackal, Pyramid, Anubis, Snake, Obelisk, Horus, Cat, Sarcophagus];
 
   const symbolsNewArray = [
-    { name: Bastet, value: 'high' },
-    { name: Scarab, value: 'med' },
-    { name: Ankh, value: 'low' },
-    { name: Thoth, value: 'high' },
-    { name: Jackal, value: 'med' },
-    { name: Pyramid, value: 'low' },
-    { name: Anubis, value: 'high' },
-    { name: Snake, value: 'med' },
-    { name: Obelisk, value: 'low' },
-    { name: Horus, value: 'high' },
-    { name: Cat, value: 'med' },
-    { name: Sarcophagus, value: 'low' },
+    { name: Bastet, value: 'high', symbol: 'bastet' },
+    { name: Scarab, value: 'med', symbol: 'scarab' },
+    { name: Ankh, value: 'low', symbol: 'ankh' },
+    { name: Thoth, value: 'high', symbol: 'thoth' },
+    { name: Jackal, value: 'med', symbol: 'jackal' },
+    { name: Pyramid, value: 'low', symbol: 'pyramid' },
+    { name: Anubis, value: 'high', symbol: 'anubis' },
+    { name: Snake, value: 'med', symbol: 'snake' },
+    { name: Obelisk, value: 'low', symbol: 'obelisk' },
+    { name: Horus, value: 'high', symbol: 'horus' },
+    { name: Cat, value: 'med', symbol: 'cat' },
+    { name: Sarcophagus, value: 'low', symbol: 'sarcophagus' },
   ]
 
   const increaseArray = (arr) => {
@@ -56,7 +59,6 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
     });
     return arr;
   }
-
 
   const positionSetter = (pos) => {
     switch (pos) {
@@ -166,33 +168,39 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
 
   useEffect(() => {
     positionSetter(position);
-    // console.log(gameInitSymbolArray)
-    console.log(gameArray)
+    handleBastet();
   }, [position]);
 
   useEffect(() => {
     const gameInitSymbolArray = increaseArray(symbolsNewArray);
     const randomizedGameArray = gameInitSymbolArray.sort(() => Math.random() - 0.5);
     setGameArray(randomizedGameArray);
-  }, [])
+  }, []);
+
+  const stateChecker = () => {
+    if (gameArray[position].symbol === 'anubis') {
+      return handleAnubis()
+    } else if (gameArray[position].symbol === 'bastet') {
+      return handleBastet()
+    }
+  }
 
   return (
     <div style={{ top: `${symbol}` }} className="symbols-stripe">
+
       <div className="symbol-image-wrapper">
         <img src={Sarcophagus} />
       </div>
       {
         gameArray.map((el, index) => {
           return (
-            <div
-              className={`symbol-image-wrapper 
+            <div className={`symbol-image-wrapper 
             ${el.value === 'med' ? 'medium-symbol' : ''} 
             ${el.value === 'high' ? 'high-symbol' : ''} 
             ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} 
             ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''}
             ${winPulse && winTile3 && index + 1 === position ? 'win-animate' : ''}  
-            ${index + 1 === position ? 'symbol-current' : ''}
-          `}>
+            ${index + 1 === position ? 'symbol-current' : ''}`}>
               <img className="symbol-image" src={el.name} alt='Anubis' />
             </div>
           )
@@ -205,6 +213,18 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
   )
 }
 
+const mapStateToProps = ({ curSymbolState }) => ({
+  curSymbolState
+});
+
+const mapDispatchToProps = {
+  handleAnubis: isAnubis,
+  handleBastet: isBastet
+};
+
+const Symbols = connect(
+  mapStateToProps,
+  mapDispatchToProps)(SymbolsComponent);
+
 export default Symbols;
 
-// ${initial && index === 0 ? 'initial' : ''} 

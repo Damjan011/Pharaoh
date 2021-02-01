@@ -1,8 +1,8 @@
 import {
-  TYPE_ANUBIS, TYPE_BASTET, TYPE_HORUS, TYPE_THOTH, TYPE_JACKAL,
+  TYPE_INCREMENT, TYPE_DECREMENT, TYPE_ANUBIS, TYPE_BASTET, TYPE_HORUS, TYPE_THOTH, TYPE_JACKAL,
   TYPE_SNAKE, TYPE_SCARAB, TYPE_CAT, TYPE_SARCOPHAGUS, TYPE_PYRAMID,
   TYPE_ANKH, TYPE_OBELISK
-} from './actionTypes';
+} from '../actionTypes.js';
 
 const initialState = {
   name: '',
@@ -11,6 +11,18 @@ const initialState = {
 
 const currentPositionReducer = (state = initialState, action) => {
   switch (action.type) {
+    case TYPE_DECREMENT:
+      return {
+        ...state,
+        name: 'jasam dekree',
+        value: 'oooo'
+      }
+      case TYPE_INCREMENT:
+      return {
+        ...state,
+        name: 'jasam inkree',
+        value: 'ooaaoo'
+      }
     case TYPE_ANUBIS:
       return {
         ...state,

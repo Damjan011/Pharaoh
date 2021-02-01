@@ -12,6 +12,7 @@ import BetButtons from './components/BetButtons';
 import StartGamePanel from './components/StartGamePanel';
 import WinPanel from './components/WinPanel';
 import Legend from './components/Legend';
+import store from './redux/store';
 
 const App = () => {
   const [background, setBackground] = useState(false);
@@ -124,6 +125,10 @@ const winChecker = (pos1, pos2, pos3) => {
   useEffect(() => {
     if (gameInit) {
       //setWinner(true);
+      console.log(store.getState());
+      store.subscribe(() =>
+  console.log('State after dispatch: ', store.getState())
+)
       setWonFunds(0)
       if (winTile1) {
         setWinTile1(false);
