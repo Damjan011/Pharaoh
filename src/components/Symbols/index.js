@@ -167,6 +167,7 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
   useEffect(() => {
     positionSetter(position);
     // console.log(gameInitSymbolArray)
+    console.log(gameArray)
   }, [position]);
 
   useEffect(() => {
@@ -185,8 +186,8 @@ const Symbols = ({ winTile2, winTile1, winTile3, position, winPulse }) => {
           return (
             <div
               className={`symbol-image-wrapper 
-            ${index === 1 || index === 4 || index === 7 || index === 10 ? 'medium-symbol' : ''} 
-            ${index === 0 || index === 3 || index === 6 || index === 9 ? 'high-symbol' : ''} 
+            ${el.value === 'med' ? 'medium-symbol' : ''} 
+            ${el.value === 'high' ? 'high-symbol' : ''} 
             ${winPulse && winTile2 && index + 1 === position ? 'win-animate' : ''} 
             ${winPulse && winTile1 && index + 1 === position ? 'win-animate' : ''}
             ${winPulse && winTile3 && index + 1 === position ? 'win-animate' : ''}  

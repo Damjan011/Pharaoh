@@ -17,11 +17,11 @@ const App = () => {
   const [background, setBackground] = useState(false);
   const [trigger, setTrigger] = useState(0);
   const [positionTop1, setPositionTop1] = useState(0);
-  const [position1, setPosition1] = useState(0);
-  const [position2, setPosition2] = useState(0);
-  const [position3, setPosition3] = useState(0);
-  const [position4, setPosition4] = useState(0);
-  const [position5, setPosition5] = useState(0);
+  const [position1, setPosition1] = useState('');
+  const [position2, setPosition2] = useState('');
+  const [position3, setPosition3] = useState('');
+  const [position4, setPosition4] = useState('');
+  const [position5, setPosition5] = useState('');
   const [winner, setWinner] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [credit, setCredit] = useState(0);

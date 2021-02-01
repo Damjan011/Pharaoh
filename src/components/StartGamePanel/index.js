@@ -14,13 +14,6 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
     }, 200);
   }
 
-  function isNumberKey(evt) {
-    var charCode = (evt.which) ? evt.which : evt.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-      return false;
-    return true;
-  }
-
   return (
     <div className="start-game-panel">
       <div className={`start-game-box ${startAppear ? 'start-game-appear' : 'start-game-disappear'}`}>
