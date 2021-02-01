@@ -3,6 +3,7 @@ import './style.css';
 
 const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
   const [inputWarning, setInputWarning] = useState(false);
+  const [minInputWarning, setMinInputWarning] = useState(true);
   const [startAppear, setStartAppear] = useState(true);
   const fundInput = useRef(null);
 
@@ -38,35 +39,46 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
               <p>Please enter your funds:</p>
             </div>
             <div className="funds-bar">
-              <input placeholder="0" onChange={() => {
+              <input autoFocus={true} placeholder="0" onChange={() => {
                 console.log(fundInput.current.value);
                 if (fundInput.current.value > 999) {
                   fundInput.current.value = 999;
                   setInputWarning(true);
                 } else if (fundInput.current.value == 0) {
                   fundInput.current.value = null;
+                } else {
                   setInputWarning(false)
+                }
+
+                if (fundInput.current.value > 50) {
+                  setMinInputWarning(false);
+                } else {
+                  setMinInputWarning(true)
                 }
               }} ref={fundInput}
 
                 max="3" type="number"></input>
-              <span>$</span>
+              <span>&euro;</span>
             </div>
-
-            {
-              inputWarning &&
-              <p>max 999</p>
-            }
           </div>
+            <div className="input-warning">
+              <div className={`warning-max ${inputWarning ? 'input-warning-appear' : 'input-warning-disappear'}`}>
+                <p>max. 999</p>
+              </div>
+
+              <div style={{right: '20px'}} className={`warning-max ${minInputWarning ? 'input-warning-appear' : 'input-warning-disappear'}`}>
+                <p>min. 50</p>
+              </div>
+            </div>
         </div>
-        <button onClick={() => {
+        <button disabled={minInputWarning} onClick={() => {
           setStartAppear(false);
           setTimeout(() => {
             setStartGame(false);
           }, 700);
           clickPlay();
         }
-        } className="play-button">
+        } className={`play-button ${minInputWarning ? 'button-disabled' : ''}`}>
           PLAY
         </button>
       </div>
