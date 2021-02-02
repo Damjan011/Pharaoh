@@ -127,8 +127,10 @@ const winChecker = (pos1, pos2, pos3) => {
       //setWinner(true);
       console.log(store.getState());
       store.subscribe(() =>
-  console.log('State after dispatch: ', store.getState())
-)
+  console.log('State after dispatch: ', store.getState()));
+  console.log('I AM FIRST RAIL', store.getState().firstRailReducer)
+  console.log('I AM SECOND RAIL', store.getState().secondRailReducer)
+
       setWonFunds(0)
       if (winTile1) {
         setWinTile1(false);
@@ -140,19 +142,6 @@ const winChecker = (pos1, pos2, pos3) => {
         setWinTile3(false)
       }
       console.log('im top',positionTop1)
-      // if (position1 && position1 === position2 || position2 === position3 || position1 === position2 === position3) {
-      //   setTimeout(() => {
-      //     //
-      //     setWinPulse(true);
-      //     setWinTile1(true)
-      //     setWinTile2(true)
-      //     setWinTile3(true)
-      //     winAudio();
-      //     console.log(position1, position2, position3)
-      //     console.log('WIN');
-      //     setCredit(credit + (bet * 5))
-      //   }, 1600)
-      // }
       winChecker(position1, position2, position3)
     }
   }, [position1]);

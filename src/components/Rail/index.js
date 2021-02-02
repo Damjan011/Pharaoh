@@ -6,7 +6,7 @@ const Rail = ({ trigger, winTile1, winTile2, winTile3, changePosition, winPulse 
   const [spinValue, setSpinValue] = useState(1);
   const spin = (param) => {
     if (param) {
-      const randomSpin = Math.ceil(Math.random() * 56 + 1);
+      const randomSpin = Math.ceil(Math.random() * 11 + 1);
       return randomSpin;
     }
   }

@@ -46,7 +46,7 @@ code {
 }
 
 .view {
-  padding: 30px 25px 30px 25px;
+  padding: 10px 25px 10px 25px;
 }
 
 .faded {
@@ -114,7 +114,6 @@ code {
 }
 
 .top-bar {
-  height: 135px;
   display: flex;
   align-items: center;
   justify-content: space-between;

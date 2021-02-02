@@ -13,9 +13,14 @@ import Bastet from '../../assets/symbols/bastet.png';
 import Thoth from '../../assets/symbols/thoth.png';
 import Horus from '../../assets/symbols/horus.png';
 import { connect } from 'react-redux';
-import { isAnubis, isBastet } from '../../redux/actionCreators.js';
+import { isAnubis, isBastet, isHorus, isThoth, 
+  isSnake, isJackal, isCat, isScarab,
+isAnkh, isObelisk, isPyramid, isSarcophagus } from '../../redux/actionCreators.js';
 
-const SymbolsComponent = ({ winTile2, winTile1, handleAnubis, handleBastet, winTile3, position, winPulse, curSymbolState }) => {
+const SymbolsComponent = ({ gameInit, winTile2, winTile1, 
+  handleAnubis, handleBastet, handleHorus, handleThoth, 
+  handleScarab, handleCat, handleSnake, handleJackal, 
+  handleAnkh, handlePyramid, handleSarcophagus, handleObelisk, winTile3, position, winPulse, curSymbolState }) => {
   const [gameArray, setGameArray] = useState([{name: '', value: '', symbol: ''}]);
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
@@ -168,7 +173,8 @@ const SymbolsComponent = ({ winTile2, winTile1, handleAnubis, handleBastet, winT
 
   useEffect(() => {
     positionSetter(position);
-    handleBastet();
+    if(position > 1)
+    stateChecker(position)
   }, [position]);
 
   useEffect(() => {
@@ -177,11 +183,49 @@ const SymbolsComponent = ({ winTile2, winTile1, handleAnubis, handleBastet, winT
     setGameArray(randomizedGameArray);
   }, []);
 
-  const stateChecker = () => {
-    if (gameArray[position].symbol === 'anubis') {
-      return handleAnubis()
-    } else if (gameArray[position].symbol === 'bastet') {
-      return handleBastet()
+  const stateChecker = (param) => {
+    // if (gameArray[param].symbol === 'anubis') {
+    //   return handleAnubis()
+    // } else if (gameArray[param].symbol === 'bastet') {
+    //   return handleBastet()
+    // }
+    switch(gameArray[param - 1].symbol) {
+      case 'anubis':
+        return handleAnubis()
+        break;
+        case 'bastet':
+          return handleBastet()
+          break;
+        case 'horus':
+          return handleHorus()
+          break;
+        case 'thoth':
+          return handleThoth()
+          break;
+        case 'scarab':
+          return handleScarab()
+          break;
+        case 'jackal':
+          return handleJackal()
+          break;
+        case 'cat':
+          return handleCat();
+          break;
+        case 'snake':
+          return handleSnake()
+          break;
+        case 'pyramid':
+          return handlePyramid()
+          break;
+        case 'ankh':
+          return handleAnkh();
+          break;
+        case 'sarcophagus':
+          return handleSarcophagus();
+          break;
+        case 'obelisk':
+          return handleObelisk();
+          break;
     }
   }
 
@@ -219,7 +263,17 @@ const mapStateToProps = ({ curSymbolState }) => ({
 
 const mapDispatchToProps = {
   handleAnubis: isAnubis,
-  handleBastet: isBastet
+  handleBastet: isBastet,
+  handleHorus: isHorus,
+  handleThoth: isThoth,
+  handleCat: isCat,
+  handleJackal: isJackal,
+  handleSnake: isSnake,
+  handleScarab: isScarab,
+  handleAnkh: isAnkh,
+  handlePyramid: isPyramid,
+  handleSarcophagus: isSarcophagus,
+  handleObelisk: isObelisk
 };
 
 const Symbols = connect(
