@@ -21,8 +21,6 @@ const initialState = {
 
 const firstRailReducer = (state = initialState, action) => {
   switch(action.type) {
-    case TYPE_MAIN_SYMBOL:
-      switch (action.type) {
         case TYPE_ANUBIS:
           return {
             ...state,
@@ -122,9 +120,8 @@ const firstRailReducer = (state = initialState, action) => {
         default:
           return state;
       }
-      default:
-        return state;
-  }
+    
+
 }
 
 // const firstRailReducer = (state = initialState, action) => {

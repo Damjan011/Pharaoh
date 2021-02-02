@@ -92,7 +92,7 @@ const winChecker = (pos1, pos2, pos3) => {
       setWinPulse(true);
       setWinTile1(true);
       setWinTile2(true);
-      winAudio();
+      //winAudio();
     console.log(position1, position2, position3)
     console.log('WIN');
     setCredit(credit + (bet * 3));
@@ -101,7 +101,7 @@ const winChecker = (pos1, pos2, pos3) => {
       setWinPulse(true);
       setWinTile2(true);
       setWinTile3(true);
-      winAudio();
+      //winAudio();
     console.log(position1, position2, position3)
     console.log('WIN');
     setCredit(credit + (bet * 3));
@@ -111,13 +111,12 @@ const winChecker = (pos1, pos2, pos3) => {
       setWinTile1(true);
       setWinTile2(true);
       setWinTile3(true);
-      winAudio();
+      //winAudio();
     console.log(position1, position2, position3)
     console.log('WIN');
     setCredit(credit + (bet * 3));
     setWonFunds(bet * 3);
     }
-    
   }, 1600);
   }
 }
@@ -128,7 +127,6 @@ const winChecker = (pos1, pos2, pos3) => {
       console.log(store.getState());
       store.subscribe(() =>
       console.log('State after dispatch: ', store.getState()));
-      console.log('I AM FIRST RAIL', store.getState().firstRailReducer)
       //
       setWonFunds(0)
       if (winTile1) {
@@ -174,7 +172,7 @@ const winChecker = (pos1, pos2, pos3) => {
           <div className="pseudo">
           </div>
           <button disabled={buttonDisabled || credit - bet < 0} className={`spin-button ${buttonDisabled || credit - bet < 0 ? 'button-disabled' : ''}`} onClick={() => {
-            clickAudio();
+            //clickAudio();
             setTrigger(spin);
             setButtonDisabled(true);
             setGameInit(true);

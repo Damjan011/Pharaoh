@@ -27,7 +27,6 @@ const SymbolsComponent = ({ winTile2, winTile1,
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
   // ${initial && index === 0 ? 'initial' : ''} 
-  const symbolsArray = [Bastet, Scarab, Ankh, Thoth, Jackal, Pyramid, Anubis, Snake, Obelisk, Horus, Cat, Sarcophagus];
 
   const symbolsNewArray = [
     { name: Bastet, value: 'high', symbol: 'bastet' },
@@ -176,9 +175,7 @@ const SymbolsComponent = ({ winTile2, winTile1,
   useEffect(() => {
     positionSetter(position);
     if(position > 1) {
-      handleMain = mainSymbolChecker(position)
-      // handleTop = topSymbolChecker(position)
-      // handleBottom = bottomSymbolChecker(position)
+      topSymbolChecker(position)
     }
   }, [position]);
 
@@ -339,27 +336,19 @@ const SymbolsComponent = ({ winTile2, winTile1,
   )
 }
 
-
-
-const dispatchObj = {
-  handleTop: {
-  handleAnubis: isAnubis,
-  handleBastet: isBastet,
-  handleHorus: isHorus,
-  handleThoth: isThoth,
-  handleCat: isCat,
-  handleJackal: isJackal,
-  handleSnake: isSnake,
-  handleScarab: isScarab,
-  handleAnkh: isAnkh,
-  handlePyramid: isPyramid,
-  handleSarcophagus: isSarcophagus,
-  handleObelisk: isObelisk
-  }
-}
-
 const mapDispatchToProps = {
-  handleMain: mainSymbol,
+    handleAnubis: isAnubis,
+    handleBastet: isBastet,
+    handleHorus: isHorus,
+    handleThoth: isThoth,
+    handleCat: isCat,
+    handleJackal: isJackal,
+    handleSnake: isSnake,
+    handleScarab: isScarab,
+    handleAnkh: isAnkh,
+    handlePyramid: isPyramid,
+    handleSarcophagus: isSarcophagus,
+    handleObelisk: isObelisk
 }
 
 const Symbols = connect(
@@ -367,4 +356,3 @@ const Symbols = connect(
   mapDispatchToProps)(SymbolsComponent);
 
 export default Symbols;
-
