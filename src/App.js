@@ -130,7 +130,6 @@ const winChecker = (pos1, pos2, pos3) => {
   console.log('State after dispatch: ', store.getState()));
   console.log('I AM FIRST RAIL', store.getState().firstRailReducer)
   console.log('I AM SECOND RAIL', store.getState().secondRailReducer)
-
       setWonFunds(0)
       if (winTile1) {
         setWinTile1(false);
