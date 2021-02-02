@@ -33,7 +33,6 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
             </div>
             <div className="funds-bar">
               <input autoFocus={true} placeholder="0" onChange={() => {
-                console.log(fundInput.current.value);
                 if (fundInput.current.value > 999) {
                   fundInput.current.value = 999;
                   setInputWarning(true);
@@ -42,7 +41,6 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
                 } else {
                   setInputWarning(false)
                 }
-
                 if (fundInput.current.value > 50) {
                   setMinInputWarning(false);
                 } else {

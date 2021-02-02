@@ -127,9 +127,9 @@ const winChecker = (pos1, pos2, pos3) => {
       //setWinner(true);
       console.log(store.getState());
       store.subscribe(() =>
-  console.log('State after dispatch: ', store.getState()));
-  console.log('I AM FIRST RAIL', store.getState().firstRailReducer)
-  console.log('I AM SECOND RAIL', store.getState().secondRailReducer)
+      console.log('State after dispatch: ', store.getState()));
+      console.log('I AM FIRST RAIL', store.getState().firstRailReducer)
+      //
       setWonFunds(0)
       if (winTile1) {
         setWinTile1(false);
@@ -140,7 +140,6 @@ const winChecker = (pos1, pos2, pos3) => {
       if (winTile3) {
         setWinTile3(false)
       }
-      console.log('im top',positionTop1)
       winChecker(position1, position2, position3)
     }
   }, [position1]);
@@ -159,10 +158,7 @@ const winChecker = (pos1, pos2, pos3) => {
         <Sound background={background} />
         <div className="top-bar">
           <Legend />
-          <button className="sound-button" onClick={() => {
-            setBackground(!background);
-            }
-            }>
+          <button className="sound-button" onClick={() => setBackground(!background)}>
             <img className="sound-image" src={background ? SoundOn : SoundOff} />
           </button>
         </div>
@@ -170,8 +166,8 @@ const winChecker = (pos1, pos2, pos3) => {
           <Rail winTile1={winTile1} winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position1 => setPosition1(position1)} trigger={trigger} />
           <Rail winTile2={winTile2} winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position2 => setPosition2(position2)} trigger={trigger} />
           <Rail winTile3={winTile3} winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position3 => setPosition3(position3)} trigger={trigger} />
-          <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
-          <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position5 => setPosition5(position5)} trigger={trigger} />
+          {/* <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
+          <Rail winPulse={winPulse} changePositionTop={positionTop1 => setPositionTop1(positionTop1)} changePosition={position5 => setPosition5(position5)} trigger={trigger} /> */}
         </div>
 
         <div className="action-buttons-container">

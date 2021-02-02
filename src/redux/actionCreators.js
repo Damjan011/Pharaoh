@@ -1,14 +1,6 @@
-import { TYPE_INCREMENT, TYPE_DECREMENT, TYPE_ANUBIS, TYPE_BASTET, TYPE_HORUS, TYPE_THOTH, TYPE_JACKAL, 
+import { TYPE_ANUBIS, TYPE_BASTET, TYPE_HORUS, TYPE_THOTH, TYPE_JACKAL, 
   TYPE_SNAKE, TYPE_SCARAB, TYPE_CAT, TYPE_SARCOPHAGUS, TYPE_PYRAMID, 
-  TYPE_ANKH, TYPE_OBELISK } from './actionTypes';
-
-  export const increment = () => ({
-    type: TYPE_INCREMENT
-  });
-  
-  export const decrement = () => ({
-    type: TYPE_DECREMENT
-  });
+  TYPE_ANKH, TYPE_OBELISK, TYPE_BOTTOM_SYMBOL, TYPE_MAIN_SYMBOL, TYPE_TOP_SYMBOL } from './actionTypes';
 
 export const isAnubis = () => ({
   type: TYPE_ANUBIS
@@ -56,4 +48,16 @@ export const isAnkh = () => ({
 
 export const isObelisk = () => ({
   type: TYPE_OBELISK
+});
+
+export const topSymbol = () => ({
+  type: TYPE_TOP_SYMBOL
+});
+
+export const mainSymbol = () => ({
+  type: TYPE_MAIN_SYMBOL
+});
+
+export const bottomSymbol = () => ({
+  type: TYPE_BOTTOM_SYMBOL
 });

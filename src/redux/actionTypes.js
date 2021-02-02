@@ -10,5 +10,7 @@ export const TYPE_ANKH = 'ANKH';
 export const TYPE_PYRAMID = 'PYRAMID';
 export const TYPE_SARCOPHAGUS = 'SARCOPHAGUS';
 export const TYPE_OBELISK = 'OBELISK';
-export const TYPE_DECREMENT = 'DECREMENT';
-export const TYPE_INCREMENT = 'INCREMENT';
+
+export const TYPE_TOP_SYMBOL = 'TOP';
+export const TYPE_MAIN_SYMBOL = 'MAIN';
+export const TYPE_BOTTOM_SYMBOL = 'BOTTOM';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import Symbols from '../Symbols';
 
-const Rail = ({ trigger, winTile1, winTile2, winTile3, changePosition, winPulse }) => {
+const Rail = ({ passedReducer, trigger, winTile1, winTile2, winTile3, changePosition, winPulse }) => {
   const [spinValue, setSpinValue] = useState(1);
   const spin = (param) => {
     if (param) {

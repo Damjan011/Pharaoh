@@ -5,9 +5,22 @@ import {
 } from '../actionTypes.js';
 
 const initialState = {
-  name: '',
-  value: ''
-};
+  topSymbol: {
+    name: '',
+    value: ''
+  },
+  damjan: {
+    damjan: 'daa'
+  },
+  mainSymbol: {
+    name: '',
+    value: ''
+  },
+  bottomSymbol: {
+    name: '',
+    value: ''
+  }
+}
 
 const secondRailReducer = (state = initialState, action) => {
   switch (action.type) {

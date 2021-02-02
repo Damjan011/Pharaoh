@@ -15,12 +15,14 @@ import Horus from '../../assets/symbols/horus.png';
 import { connect } from 'react-redux';
 import { isAnubis, isBastet, isHorus, isThoth, 
   isSnake, isJackal, isCat, isScarab,
-isAnkh, isObelisk, isPyramid, isSarcophagus } from '../../redux/actionCreators.js';
+isAnkh, isObelisk, isPyramid, isSarcophagus, topSymbol, mainSymbol, bottomSymbol } from '../../redux/actionCreators.js';
 
-const SymbolsComponent = ({ gameInit, winTile2, winTile1, 
+const SymbolsComponent = ({ winTile2, winTile1, 
   handleAnubis, handleBastet, handleHorus, handleThoth, 
   handleScarab, handleCat, handleSnake, handleJackal, 
-  handleAnkh, handlePyramid, handleSarcophagus, handleObelisk, winTile3, position, winPulse, curSymbolState }) => {
+  handleAnkh, handlePyramid, handleSarcophagus, 
+  handleObelisk, winTile3, position, winPulse, handleTop, handleBottom, handleMain
+   }) => {
   const [gameArray, setGameArray] = useState([{name: '', value: '', symbol: ''}]);
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
@@ -173,8 +175,11 @@ const SymbolsComponent = ({ gameInit, winTile2, winTile1,
 
   useEffect(() => {
     positionSetter(position);
-    if(position > 1)
-    stateChecker(position)
+    if(position > 1) {
+      handleMain = mainSymbolChecker(position)
+      // handleTop = topSymbolChecker(position)
+      // handleBottom = bottomSymbolChecker(position)
+    }
   }, [position]);
 
   useEffect(() => {
@@ -183,13 +188,90 @@ const SymbolsComponent = ({ gameInit, winTile2, winTile1,
     setGameArray(randomizedGameArray);
   }, []);
 
-  const stateChecker = (param) => {
-    // if (gameArray[param].symbol === 'anubis') {
-    //   return handleAnubis()
-    // } else if (gameArray[param].symbol === 'bastet') {
-    //   return handleBastet()
-    // }
+  const mainSymbolChecker = (param) => {
     switch(gameArray[param - 1].symbol) {
+      case 'anubis':
+        return isAnubis()
+        break;
+        case 'bastet':
+          return isBastet()
+          break;
+        case 'horus':
+          return isHorus()
+          break;
+        case 'thoth':
+          return isThoth()
+          break;
+        case 'scarab':
+          return isScarab()
+          break;
+        case 'jackal':
+          return isJackal()
+          break;
+        case 'cat':
+          return isCat();
+          break;
+        case 'snake':
+          return isSnake()
+          break;
+        case 'pyramid':
+          return isPyramid()
+          break;
+        case 'ankh':
+          return isAnkh();
+          break;
+        case 'sarcophagus':
+          return isSarcophagus();
+          break;
+        case 'obelisk':
+          return isObelisk();
+          break;
+    }
+  }
+
+  const topSymbolChecker = (param) => {
+    switch(gameArray[param - 2].symbol) {
+      case 'anubis':
+        return handleAnubis()
+        break;
+        case 'bastet':
+          return handleBastet()
+          break;
+        case 'horus':
+          return handleHorus()
+          break;
+        case 'thoth':
+          return handleThoth()
+          break;
+        case 'scarab':
+          return handleScarab()
+          break;
+        case 'jackal':
+          return handleJackal()
+          break;
+        case 'cat':
+          return handleCat();
+          break;
+        case 'snake':
+          return handleSnake()
+          break;
+        case 'pyramid':
+          return handlePyramid()
+          break;
+        case 'ankh':
+          return handleAnkh();
+          break;
+        case 'sarcophagus':
+          return handleSarcophagus();
+          break;
+        case 'obelisk':
+          return handleObelisk();
+          break;
+    }
+  }
+
+  const bottomSymbolChecker = (param) => {
+    switch(gameArray[param].symbol) {
       case 'anubis':
         return handleAnubis()
         break;
@@ -257,11 +339,10 @@ const SymbolsComponent = ({ gameInit, winTile2, winTile1,
   )
 }
 
-const mapStateToProps = ({ curSymbolState }) => ({
-  curSymbolState
-});
 
-const mapDispatchToProps = {
+
+const dispatchObj = {
+  handleTop: {
   handleAnubis: isAnubis,
   handleBastet: isBastet,
   handleHorus: isHorus,
@@ -274,10 +355,15 @@ const mapDispatchToProps = {
   handlePyramid: isPyramid,
   handleSarcophagus: isSarcophagus,
   handleObelisk: isObelisk
-};
+  }
+}
+
+const mapDispatchToProps = {
+  handleMain: mainSymbol,
+}
 
 const Symbols = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps)(SymbolsComponent);
 
 export default Symbols;

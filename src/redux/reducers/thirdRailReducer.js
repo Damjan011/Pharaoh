@@ -5,9 +5,19 @@ import {
 } from '../actionTypes.js';
 
 const initialState = {
-  name: '',
-  value: ''
-};
+  topSymbol: {
+    name: '',
+    value: ''
+  },
+  mainSymbol: {
+    name: '',
+    value: ''
+  },
+  bottomSymbol: {
+    name: '',
+    value: ''
+  }
+}
 
 const thirdRailReducer = (state = initialState, action) => {
   switch (action.type) {
