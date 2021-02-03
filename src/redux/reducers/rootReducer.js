@@ -9,7 +9,7 @@ import bottomReducer from './bottomReducer';
 //   firstRailReducer, secondRailReducer, 
 //   thirdRailReducer});
 
-const rootReducer = combineReducers({secondRailReducer});
+const rootReducer = secondRailReducer;
 
 // const rootReducer = bottomReducer;
 

@@ -4,7 +4,7 @@ import topReducer from './topReducer';
 import {combineReducers} from 'redux';
 
 const secondRailReducer = combineReducers({
-  mainReducer, bottomReducer, topReducer
+  mainSymbol: mainReducer, bottomSymbol: bottomReducer, topSymbol: topReducer
 })
 
 export default secondRailReducer;

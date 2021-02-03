@@ -61,3 +61,23 @@ export const mainSymbol = () => ({
 export const bottomSymbol = () => ({
   type: TYPE_BOTTOM_SYMBOL
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const jaCuBitiAkcijaTop = (payload) => {
+//   return dispatch => {
+//     dispatch(action1(payload))
+//   }
+// }
