@@ -13,17 +13,19 @@ import Bastet from '../../assets/symbols/bastet.png';
 import Thoth from '../../assets/symbols/thoth.png';
 import Horus from '../../assets/symbols/horus.png';
 import { connect } from 'react-redux';
-import { isAnubis, isBastet, isHorus, isThoth, 
+import {
+  isAnubis, isBastet, isHorus, isThoth,
   isSnake, isJackal, isCat, isScarab,
-isAnkh, isObelisk, isPyramid, isSarcophagus, topSymbol, mainSymbol, bottomSymbol } from '../../redux/actionCreators.js';
+  isAnkh, isObelisk, isPyramid, isSarcophagus, topSymbol, mainSymbol, bottomSymbol
+} from '../../redux/actionCreators.js';
 
-const SymbolsComponent = ({ winTile2, winTile1, 
-  handleAnubis, handleBastet, handleHorus, handleThoth, 
-  handleScarab, handleCat, handleSnake, handleJackal, 
-  handleAnkh, handlePyramid, handleSarcophagus, 
+const SymbolsComponent = ({ winTile2, winTile1,
+  handleAnubis, handleBastet, handleHorus, handleThoth,
+  handleScarab, handleCat, handleSnake, handleJackal,
+  handleAnkh, handlePyramid, handleSarcophagus,
   handleObelisk, winTile3, position, winPulse, handleTop, handleBottom, handleMain
-   }) => {
-  const [gameArray, setGameArray] = useState([{name: '', value: '', symbol: ''}]);
+}) => {
+  const [gameArray, setGameArray] = useState([{ name: '', value: '', symbol: '' }]);
   const [symbol, setSymbol] = useState('');
   const [initial, setInitial] = useState(true);
   // ${initial && index === 0 ? 'initial' : ''} 
@@ -174,8 +176,11 @@ const SymbolsComponent = ({ winTile2, winTile1,
 
   useEffect(() => {
     positionSetter(position);
-    if(position > 1) {
+    if (position > 1) {
       topSymbolChecker(position)
+      mainSymbolChecker(position)
+      bottomSymbolChecker(position)
+      console.log('bakaa',bigStateSetter(position))
     }
   }, [position]);
 
@@ -185,126 +190,136 @@ const SymbolsComponent = ({ winTile2, winTile1,
     setGameArray(randomizedGameArray);
   }, []);
 
+  const bigStateSetter = (param) => {
+    return {
+      topSymbol: topSymbolChecker(param),
+      mainSymbol: mainSymbolChecker(param),
+      bottomSymbol: bottomSymbolChecker(param)
+    }
+  }
+
+  
+
   const mainSymbolChecker = (param) => {
-    switch(gameArray[param - 1].symbol) {
+    switch (gameArray[param - 1].symbol) {
       case 'anubis':
-        return isAnubis()
+        return handleAnubis()
         break;
-        case 'bastet':
-          return isBastet()
-          break;
-        case 'horus':
-          return isHorus()
-          break;
-        case 'thoth':
-          return isThoth()
-          break;
-        case 'scarab':
-          return isScarab()
-          break;
-        case 'jackal':
-          return isJackal()
-          break;
-        case 'cat':
-          return isCat();
-          break;
-        case 'snake':
-          return isSnake()
-          break;
-        case 'pyramid':
-          return isPyramid()
-          break;
-        case 'ankh':
-          return isAnkh();
-          break;
-        case 'sarcophagus':
-          return isSarcophagus();
-          break;
-        case 'obelisk':
-          return isObelisk();
-          break;
+      case 'bastet':
+        return handleBastet()
+        break;
+      case 'horus':
+        return handleHorus()
+        break;
+      case 'thoth':
+        return handleThoth()
+        break;
+      case 'scarab':
+        return handleScarab()
+        break;
+      case 'jackal':
+        return handleJackal()
+        break;
+      case 'cat':
+        return handleCat();
+        break;
+      case 'snake':
+        return handleSnake()
+        break;
+      case 'pyramid':
+        return handlePyramid()
+        break;
+      case 'ankh':
+        return handleAnkh();
+        break;
+      case 'sarcophagus':
+        return handleSarcophagus();
+        break;
+      case 'obelisk':
+        return handleObelisk();
+        break;
     }
   }
 
   const topSymbolChecker = (param) => {
-    switch(gameArray[param - 2].symbol) {
+    switch (gameArray[param - 2].symbol) {
       case 'anubis':
         return handleAnubis()
         break;
-        case 'bastet':
-          return handleBastet()
-          break;
-        case 'horus':
-          return handleHorus()
-          break;
-        case 'thoth':
-          return handleThoth()
-          break;
-        case 'scarab':
-          return handleScarab()
-          break;
-        case 'jackal':
-          return handleJackal()
-          break;
-        case 'cat':
-          return handleCat();
-          break;
-        case 'snake':
-          return handleSnake()
-          break;
-        case 'pyramid':
-          return handlePyramid()
-          break;
-        case 'ankh':
-          return handleAnkh();
-          break;
-        case 'sarcophagus':
-          return handleSarcophagus();
-          break;
-        case 'obelisk':
-          return handleObelisk();
-          break;
+      case 'bastet':
+        return handleBastet()
+        break;
+      case 'horus':
+        return handleHorus()
+        break;
+      case 'thoth':
+        return handleThoth()
+        break;
+      case 'scarab':
+        return handleScarab()
+        break;
+      case 'jackal':
+        return handleJackal()
+        break;
+      case 'cat':
+        return handleCat();
+        break;
+      case 'snake':
+        return handleSnake()
+        break;
+      case 'pyramid':
+        return handlePyramid()
+        break;
+      case 'ankh':
+        return handleAnkh();
+        break;
+      case 'sarcophagus':
+        return handleSarcophagus();
+        break;
+      case 'obelisk':
+        return handleObelisk();
+        break;
     }
   }
 
   const bottomSymbolChecker = (param) => {
-    switch(gameArray[param].symbol) {
+    switch (gameArray[param].symbol) {
       case 'anubis':
-        return handleAnubis()
+        return isAnubis()
         break;
-        case 'bastet':
-          return handleBastet()
-          break;
-        case 'horus':
-          return handleHorus()
-          break;
-        case 'thoth':
-          return handleThoth()
-          break;
-        case 'scarab':
-          return handleScarab()
-          break;
-        case 'jackal':
-          return handleJackal()
-          break;
-        case 'cat':
-          return handleCat();
-          break;
-        case 'snake':
-          return handleSnake()
-          break;
-        case 'pyramid':
-          return handlePyramid()
-          break;
-        case 'ankh':
-          return handleAnkh();
-          break;
-        case 'sarcophagus':
-          return handleSarcophagus();
-          break;
-        case 'obelisk':
-          return handleObelisk();
-          break;
+      case 'bastet':
+        return isBastet()
+        break;
+      case 'horus':
+        return isHorus()
+        break;
+      case 'thoth':
+        return isThoth()
+        break;
+      case 'scarab':
+        return isScarab()
+        break;
+      case 'jackal':
+        return isJackal()
+        break;
+      case 'cat':
+        return isCat();
+        break;
+      case 'snake':
+        return isSnake()
+        break;
+      case 'pyramid':
+        return isPyramid()
+        break;
+      case 'ankh':
+        return isAnkh();
+        break;
+      case 'sarcophagus':
+        return isSarcophagus();
+        break;
+      case 'obelisk':
+        return isObelisk();
+        break;
     }
   }
 
@@ -336,19 +351,24 @@ const SymbolsComponent = ({ winTile2, winTile1,
   )
 }
 
+
+
 const mapDispatchToProps = {
-    handleAnubis: isAnubis,
-    handleBastet: isBastet,
-    handleHorus: isHorus,
-    handleThoth: isThoth,
-    handleCat: isCat,
-    handleJackal: isJackal,
-    handleSnake: isSnake,
-    handleScarab: isScarab,
-    handleAnkh: isAnkh,
-    handlePyramid: isPyramid,
-    handleSarcophagus: isSarcophagus,
-    handleObelisk: isObelisk
+  // handleTop: topSymbol,
+  // handleMain: mainSymbol,
+  // handleBottom: bottomSymbol
+  handleAnubis: isAnubis,
+handleBastet: isBastet,
+handleHorus: isHorus,
+handleThoth: isThoth,
+handleCat: isCat,
+handleJackal: isJackal,
+handleSnake: isSnake,
+handleScarab: isScarab,
+handleAnkh: isAnkh,
+handlePyramid: isPyramid,
+handleSarcophagus: isSarcophagus,
+handleObelisk: isObelisk
 }
 
 const Symbols = connect(
