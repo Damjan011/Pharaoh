@@ -19,7 +19,7 @@ const StartGamePanel = ({ setStartGame, setCredit, setBackground }) => {
       <div className={`start-game-box ${startAppear ? 'start-game-appear' : 'start-game-disappear'}`}>
         <div className="start-text-content">
           <div className="welcome-title">
-            <p>WELCOME</p>
+            <p>PHARAOH</p>
           </div>
           <div className="welcome-text">
             <p>This is a 5x3 slot game. Paytables include horizontal signs of two (2) and more being the same.

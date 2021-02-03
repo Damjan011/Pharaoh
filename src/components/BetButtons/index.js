@@ -34,11 +34,11 @@ const BetButtons = ({ setBet, bet, buttonDisabled }) => {
         </button>
       </div>
       <div className="bet-max-wrapper">
-        <button disabled={buttonDisabled || bet !== 0}
+        <button disabled={buttonDisabled || bet === 10}
           onClick={() => {
             betMaxAudio();
             setBet(10);
-          }} className={`bet-one-button bet-big ${buttonDisabled || bet !== 0 ? 'button-disabled' : ''}`}>
+          }} className={`bet-one-button bet-big ${buttonDisabled || bet === 10 ? 'button-disabled' : ''}`}>
           <p>BET<br />MAX</p>
         </button>
       </div>
