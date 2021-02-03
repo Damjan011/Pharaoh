@@ -1,16 +1,8 @@
-import { combineReducers } from 'redux';
-import firstRailReducer from './firstRailReducer';
-import secondRailReducer from './secondRailReducer';
-import thirdRailReducer from './thirdRailReducer';
+import {combineReducers} from 'redux';
+import {railsReducer} from './railsReducer';
 
-import bottomReducer from './bottomReducer';
-
-// const rootReducer = combineReducers({
-//   firstRailReducer, secondRailReducer, 
-//   thirdRailReducer});
-
-const rootReducer = secondRailReducer;
-
-// const rootReducer = bottomReducer;
+const rootReducer = combineReducers({
+  rails: railsReducer,
+})
 
 export default rootReducer;

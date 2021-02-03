@@ -5,21 +5,14 @@ import {
 } from '../actionTypes.js';
 
 const initialState = {
-  topSymbol: {
     name: '',
     value: ''
-  },
-  mainSymbol: {
-    name: '',
-    value: ''
-  },
-  bottomSymbol: {
-    name: '',
-    value: ''
-  }
 }
 
-const thirdRailReducer = (state = initialState, action) => {
+// export -> negde u nekom drugom fajlu: import {konstanta} from 'ime-fajla';
+// export default -> isto ali import konstanta from 'ime-fajla';
+
+export const symbolReducer = (state = initialState, action) => {
   switch (action.type) {
     case TYPE_ANUBIS:
       return {
@@ -97,5 +90,3 @@ const thirdRailReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default thirdRailReducer;
