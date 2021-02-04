@@ -76,7 +76,6 @@ const App = () => {
     }, 4000)
   }
 
-  //move to component
   const Sound = ({ background }) => {
     return (
       <audio muted={!background} volume={0.1} autoPlay loop={true} src={AmbientSound}>
