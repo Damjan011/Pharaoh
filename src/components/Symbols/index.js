@@ -157,13 +157,14 @@ const SymbolsComponent = ({ winTile2, winTile1,
   useEffect(() => {
     positionSetter(position);
     if (position > 1) {
-  
-
       symbolChecker(position, 1)
       symbolChecker(position, 2)
       symbolChecker(position, 3)
       // console.log('bakaa', bigStateSetter(position))
     }
+    console.log('jasam gornji', gameArray[position -2])
+    console.log('jasam srednji', gameArray[position -1])
+    console.log('jasam donji', gameArray[position])
   }, [position]);
 
   useEffect(() => {
@@ -183,40 +184,40 @@ const SymbolsComponent = ({ winTile2, winTile1,
   const symbolChecker = (param, index) => {
     switch (gameArray[param - index].symbol) {
       case 'anubis':
-        return isAnubis()
+        return handleAnubis()
         break;
       case 'bastet':
-        return isBastet()
+        return handleBastet()
         break;
       case 'horus':
-        return isHorus()
+        return handleHorus()
         break;
       case 'thoth':
-        return isThoth()
+        return handleThoth()
         break;
       case 'scarab':
-        return isScarab()
+        return handleScarab()
         break;
       case 'jackal':
-        return isJackal()
+        return handleJackal()
         break;
       case 'cat':
-        return isCat();
+        return handleCat();
         break;
       case 'snake':
-        return isSnake()
+        return handleSnake()
         break;
       case 'pyramid':
-        return isPyramid()
+        return handlePyramid()
         break;
       case 'ankh':
-        return isAnkh();
+        return handleAnkh();
         break;
       case 'sarcophagus':
-        return isSarcophagus();
+        return handleSarcophagus();
         break;
       case 'obelisk':
-        return isObelisk();
+        return handleObelisk();
         break;
     }
   }

@@ -29,13 +29,10 @@ const App = () => {
   const [bet, setBet] = useState(0);
   const [gameInit, setGameInit] = useState(false);
   const [winPulse, setWinPulse] = useState(true);
-
   const [startGame, setStartGame] = useState(true);
-
   const [winTile1, setWinTile1] = useState(false);
   const [winTile2, setWinTile2] = useState(false);
   const [winTile3, setWinTile3] = useState(false);
-
   const [wonFunds, setWonFunds] = useState(0);
 
   const spin = () => {
