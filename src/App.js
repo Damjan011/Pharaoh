@@ -40,10 +40,8 @@ const App = () => {
   }
 
   const startAudio = new Audio(RollSound);
-  startAudio.volume = 1;
 
   const leverAudio = new Audio(LeverSound);
-  leverAudio.volume = 1;
 
   const coinsAudio = new Audio(CoinsSound);
   coinsAudio.volume = 1;
