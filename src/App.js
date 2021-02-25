@@ -197,8 +197,8 @@ const App = () => {
           <Rail winTile1={winTile1} winPulse={winPulse} changePosition={position1 => setPosition1(position1)} trigger={trigger} />
           <Rail winTile2={winTile2} winPulse={winPulse} changePosition={position2 => setPosition2(position2)} trigger={trigger} />
           <Rail winTile3={winTile3} winPulse={winPulse} changePosition={position3 => setPosition3(position3)} trigger={trigger} />
-          {/* <Rail winTile4={winTile4} winPulse={winPulse} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
-          <Rail winTile5={winTile5} winPulse={winPulse} changePosition={position5 => setPosition5(position5)} trigger={trigger} /> */}
+          <Rail winTile4={winTile4} winPulse={winPulse} changePosition={position4 => setPosition4(position4)} trigger={trigger} />
+          <Rail winTile5={winTile5} winPulse={winPulse} changePosition={position5 => setPosition5(position5)} trigger={trigger} />
         </div>
 
         <div className="action-buttons-container">
