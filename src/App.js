@@ -211,7 +211,7 @@ const App = () => {
             setGameInit(true);
             setTimeout(() => {
               setButtonDisabled(false);
-            }, 1800);
+            }, 1700);
             setCredit(credit - bet);
           }}>SPIN
           </button>
